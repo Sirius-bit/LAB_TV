@@ -1,0 +1,64 @@
+@import '../../../partials/variables';
+@import '../../../partials/fonts';
+
+#footer {
+    border: $black-border;
+    height: 6.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+
+    #img {
+        width: 95px;
+        height: 2.5em;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    #contatti {
+        width: 80%;
+        height: 2.5em;
+        display: flex;
+        align-items: center;
+    }
+
+    ul {
+        font-family: "social-footer";
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            cursor: pointer;
+
+            &:first-of-type {
+                color: green, ;
+            }
+
+            &:nth-of-type(2) {
+                color: #000;
+            }
+
+            &:nth-of-type(3) {
+                color: violet;
+            }
+
+            &:nth-of-type(4) {
+                color: blue;
+            }
+
+            &:last-of-type {
+                color: red;
+            }
+        }
+    }
+}

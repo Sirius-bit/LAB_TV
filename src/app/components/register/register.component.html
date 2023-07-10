@@ -1,0 +1,57 @@
+<form action="" id="form-registrazione" class="form" role="form" [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+    <h2>Registrati</h2>
+    <div class="field">
+        <label for="email-registrazione">Email</label>
+        <input type="email" name="" id="email-registrazione" autocomplete="off" placeholder="Email"
+            formControlName="email">
+        <div class="arrow-up-error"
+            *ngIf="myForm.get('email').invalid && (myForm.get('email').touched || myForm.submitted)">
+            <div *ngIf="myForm.get('email').errors.required">
+                L'email è obbligatoria
+            </div>
+            <div *ngIf="myForm.get('email').errors.email">
+                Formato email invalido
+            </div>
+        </div>
+    </div>
+    <div class="field">
+        <label for="password-registrazione">Password</label>
+        <input type="password" name="" id="password-registrazione" placeholder="Password" formControlName="password">
+        <div class="arrow-up-error"
+            *ngIf="myForm.get('password').invalid && (myForm.get('password').touched || myForm.submitted)">
+            <div *ngIf="myForm.get('password').errors.required">
+                La password è obbligatoria
+            </div>
+            <div *ngIf="myForm.get('password').errors.minlength">
+                La password deve contenere almeno 8 caratteri
+            </div>
+        </div>
+    </div>
+    <div class="field">
+        <label for="password-ripeti">Ripeti password</label>
+        <input type="password" name="" id="password-ripeti" formControlName="repeatPassword">
+        <div class="arrow-up-error"
+            *ngIf="myForm.get('repeatPassword').invalid && (myForm.get('repeatPassword').touched || myForm.submitted)">
+            <div *ngIf="myForm.get('repeatPassword').errors.required">
+                Conferma la tua password
+            </div>
+            <div *ngIf="myForm.get('repeatPassword').errors.minlength">
+                La password deve contenere almeno 8 caratteri
+            </div>
+        </div>
+    </div>
+    <div class="privacy">
+        <input type="checkbox" name="" id="privacy" formControlName="checkbox">
+        <label for="privacy">Accetta le nostre politiche di privacy</label>
+        <div class="arrow-up-error"
+            *ngIf="myForm.get('checkbox').invalid && (myForm.get('checkbox').touched || myForm.submitted)">
+            <div *ngIf="myForm.get('checkbox').errors.required">
+                Accettazione della privacy (obbligatoria)
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="submit">Registrati</button>
+    <div class="arrow-up-error" *ngIf="myForm.invalid && myForm.submitted">
+        Credenziali non valide
+    </div>
+</form>

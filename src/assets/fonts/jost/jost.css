@@ -1,0 +1,540 @@
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 100;
+	src: url('full/Jost-100-italic.woff') format('woff');
+}
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 200;
+	src: url('full/Jost-200-italic.woff') format('woff');
+}
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 300;
+	src: url('full/Jost-300-italic.woff') format('woff');
+}
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 400;
+	src: url('full/Jost-400-italic.woff') format('woff');
+}
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 500;
+	src: url('full/Jost-500-italic.woff') format('woff');
+}
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 600;
+	src: url('full/Jost-600-italic.woff') format('woff');
+}
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 700;
+	src: url('full/Jost-700-italic.woff') format('woff');
+}
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 800;
+	src: url('full/Jost-800-italic.woff') format('woff');
+}
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 900;
+	src: url('full/Jost-900-italic.woff') format('woff');
+}
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 100;
+	src: url('full/Jost-100.woff') format('woff');
+}
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 200;
+	src: url('full/Jost-200.woff') format('woff');
+}
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 300;
+	src: url('full/Jost-300.woff') format('woff');
+}
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 400;
+	src: url('full/Jost-400.woff') format('woff');
+}
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 500;
+	src: url('full/Jost-500.woff') format('woff');
+}
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 600;
+	src: url('full/Jost-600.woff') format('woff');
+}
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 700;
+	src: url('full/Jost-700.woff') format('woff');
+}
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 800;
+	src: url('full/Jost-800.woff') format('woff');
+}
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 900;
+	src: url('full/Jost-900.woff') format('woff');
+}
+/* cyrillic */
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 100;
+	src: url('cyrillic/Jost-VariableFont_wght-italic.woff2') format('woff2');
+	unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 100;
+	src: url('latin-ext/Jost-VariableFont_wght-italic.woff2') format('woff2');
+	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 100;
+	src: url('latin/Jost-VariableFont_wght-italic.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 200;
+	src: url('cyrillic/Jost-VariableFont_wght-italic.woff2') format('woff2');
+	unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 200;
+	src: url('latin-ext/Jost-VariableFont_wght-italic.woff2') format('woff2');
+	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 200;
+	src: url('latin/Jost-VariableFont_wght-italic.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 300;
+	src: url('cyrillic/Jost-VariableFont_wght-italic.woff2') format('woff2');
+	unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 300;
+	src: url('latin-ext/Jost-VariableFont_wght-italic.woff2') format('woff2');
+	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 300;
+	src: url('latin/Jost-VariableFont_wght-italic.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 400;
+	src: url('cyrillic/Jost-VariableFont_wght-italic.woff2') format('woff2');
+	unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 400;
+	src: url('latin-ext/Jost-VariableFont_wght-italic.woff2') format('woff2');
+	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 400;
+	src: url('latin/Jost-VariableFont_wght-italic.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 500;
+	src: url('cyrillic/Jost-VariableFont_wght-italic.woff2') format('woff2');
+	unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 500;
+	src: url('latin-ext/Jost-VariableFont_wght-italic.woff2') format('woff2');
+	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 500;
+	src: url('latin/Jost-VariableFont_wght-italic.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 600;
+	src: url('cyrillic/Jost-VariableFont_wght-italic.woff2') format('woff2');
+	unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 600;
+	src: url('latin-ext/Jost-VariableFont_wght-italic.woff2') format('woff2');
+	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 600;
+	src: url('latin/Jost-VariableFont_wght-italic.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 700;
+	src: url('cyrillic/Jost-VariableFont_wght-italic.woff2') format('woff2');
+	unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 700;
+	src: url('latin-ext/Jost-VariableFont_wght-italic.woff2') format('woff2');
+	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 700;
+	src: url('latin/Jost-VariableFont_wght-italic.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 800;
+	src: url('cyrillic/Jost-VariableFont_wght-italic.woff2') format('woff2');
+	unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 800;
+	src: url('latin-ext/Jost-VariableFont_wght-italic.woff2') format('woff2');
+	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 800;
+	src: url('latin/Jost-VariableFont_wght-italic.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 900;
+	src: url('cyrillic/Jost-VariableFont_wght-italic.woff2') format('woff2');
+	unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 900;
+	src: url('latin-ext/Jost-VariableFont_wght-italic.woff2') format('woff2');
+	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+	font-family: 'Jost';
+	font-style: italic;
+	font-weight: 900;
+	src: url('latin/Jost-VariableFont_wght-italic.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 100;
+	src: url('cyrillic/Jost-VariableFont_wght.woff2') format('woff2');
+	unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 100;
+	src: url('latin-ext/Jost-VariableFont_wght.woff2') format('woff2');
+	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 100;
+	src: url('latin/Jost-VariableFont_wght.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 200;
+	src: url('cyrillic/Jost-VariableFont_wght.woff2') format('woff2');
+	unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 200;
+	src: url('latin-ext/Jost-VariableFont_wght.woff2') format('woff2');
+	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 200;
+	src: url('latin/Jost-VariableFont_wght.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 300;
+	src: url('cyrillic/Jost-VariableFont_wght.woff2') format('woff2');
+	unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 300;
+	src: url('latin-ext/Jost-VariableFont_wght.woff2') format('woff2');
+	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 300;
+	src: url('latin/Jost-VariableFont_wght.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 400;
+	src: url('cyrillic/Jost-VariableFont_wght.woff2') format('woff2');
+	unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 400;
+	src: url('latin-ext/Jost-VariableFont_wght.woff2') format('woff2');
+	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 400;
+	src: url('latin/Jost-VariableFont_wght.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 500;
+	src: url('cyrillic/Jost-VariableFont_wght.woff2') format('woff2');
+	unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 500;
+	src: url('latin-ext/Jost-VariableFont_wght.woff2') format('woff2');
+	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 500;
+	src: url('latin/Jost-VariableFont_wght.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 600;
+	src: url('cyrillic/Jost-VariableFont_wght.woff2') format('woff2');
+	unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 600;
+	src: url('latin-ext/Jost-VariableFont_wght.woff2') format('woff2');
+	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 600;
+	src: url('latin/Jost-VariableFont_wght.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 700;
+	src: url('cyrillic/Jost-VariableFont_wght.woff2') format('woff2');
+	unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 700;
+	src: url('latin-ext/Jost-VariableFont_wght.woff2') format('woff2');
+	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 700;
+	src: url('latin/Jost-VariableFont_wght.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 800;
+	src: url('cyrillic/Jost-VariableFont_wght.woff2') format('woff2');
+	unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 800;
+	src: url('latin-ext/Jost-VariableFont_wght.woff2') format('woff2');
+	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 800;
+	src: url('latin/Jost-VariableFont_wght.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic */
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 900;
+	src: url('cyrillic/Jost-VariableFont_wght.woff2') format('woff2');
+	unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 900;
+	src: url('latin-ext/Jost-VariableFont_wght.woff2') format('woff2');
+	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+	font-family: 'Jost';
+	font-style: normal;
+	font-weight: 900;
+	src: url('latin/Jost-VariableFont_wght.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}

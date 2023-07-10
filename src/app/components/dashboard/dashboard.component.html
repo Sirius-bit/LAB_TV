@@ -1,0 +1,22 @@
+<div class="container-fluid">
+    <p class="m-1 d-flex justify-content-between">Trending Now<button (click)="showFilms()">Mostra tutti</button></p>
+    <div>
+        <p-carousel [value]="getFilms.films ?? []" [numVisible]="5" [numScroll]="1" [circular]="true"
+            [showIndicators]="false" [responsiveOptions]="responsiveOptions">
+            <ng-template let-film pTemplate="item">
+                <div class="border-1 surface-border border-round m-2 text-center py-5 px-3 m-1">
+                    <app-catalog (details)="details($event)"></app-catalog>
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div>
+    <p class="m-1 justify-content-space-between film">Popular</p>
+    <p-carousel [value]="getFilms.popularFilm" [numVisible]="5" [numScroll]="1" [circular]="true"
+        [showIndicators]="false" [responsiveOptions]="responsiveOptions">
+        <ng-template let-popular pTemplate="item">
+            <div class="border-1 surface-border border-round m-2 text-center py-5 px-3 m-1">
+                <app-popular-films [popular]="popular" (details)="details($event)"></app-popular-films>
+            </div>
+        </ng-template>
+    </p-carousel>
+</div>

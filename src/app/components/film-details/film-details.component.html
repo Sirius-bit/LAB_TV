@@ -1,0 +1,31 @@
+<div class="container-details">
+    <div class="container-iframe">
+        <iframe class="responsive-iframe" *ngIf="videoKey" [src]="films.sanitizeUrl(videoKey)" allowfullscreen
+            allow='autoplay'></iframe>
+    </div>
+    <div class="details m-2">
+        <section class="info">
+            <p class="d-flex justify-content-between titoloVoto">{{film?.title ||
+                film?.name}}<span>{{film?.vote_average}}/10</span>
+            </p>
+            <div class="container-genres d-flex flex-wrap justify-content-start">
+                <p class="genres" *ngFor="let genre of genres">{{genre}}</p>
+            </div>
+            <div class="cast d-flex align-center flex-column justify-content-center text-start">
+                <div class="director">
+                    <p>Director: <span>{{director}}</span></p>
+                </div>
+                <div class="cast">
+                    <p class="cast">Cast: <span>{{credits}}</span> </p>
+                </div>
+                <button type="button" class="button">Acquista</button>
+            </div>
+        </section>
+        <div class="trama">
+            <h3 class="overview-title">Overview</h3>
+            <p>
+                {{film?.overview}}
+            </p>
+        </div>
+    </div>
+    <app-similar-films [similarFilms]="similarFilms" (details)="goToDetailSimilarFilm($event)"></app-similar-films>

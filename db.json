@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "email": "test.test@gmail.com",
+      "password": "$2a$10$0yCaq9HEUd.M6IR51hjfPeHH0KmjlT9RBt2Wry8eRVJRWY4eLHRaS",
+      "repeatPassword": "cicciooo",
+      "id": 1
+    }
+  ],
+  "posts": [],
+  "films-acquistati": []
+}

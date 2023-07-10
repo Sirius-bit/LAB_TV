@@ -1,0 +1,35 @@
+<form action="" id="form" class="form" [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+    <h2>Accedi</h2>
+    <div>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" autocomplete="off" placeholder="Email" formControlName="email">
+        <div class="arrow-up-error"
+            *ngIf="myForm.get('email').invalid && (myForm.get('email').touched || myForm.submitted)">
+            <div *ngIf="myForm.get('email').errors.required">
+                L'email è obbligatoria
+            </div>
+            <div *ngIf="myForm.get('email').errors.email">
+                Formato email invalido
+            </div>
+        </div>
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" placeholder="Password" formControlName="password">
+        <div class="arrow-up-error"
+            *ngIf="myForm.get('password').invalid && (myForm.get('password').touched || myForm.submitted)">
+            <div *ngIf="myForm.get('password').errors.required">
+                La password è obbligatoria
+            </div>
+            <div *ngIf="myForm.get('password').errors.minlength">
+                La password deve contenere almeno 8 caratteri
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="submit">Accedi</button>
+    <h4>Non sei registrato? <a id="registrati" routerLink="/register">Registrati</a>
+    </h4>
+    <div class="arrow-up-error" *ngIf="myForm.invalid && myForm.submitted">
+        Credenziali non valide
+    </div>
+</form>

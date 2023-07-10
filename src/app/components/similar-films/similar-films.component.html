@@ -1,0 +1,22 @@
+<!-- <p>similar-films works!</p> -->
+<div class="similar-films m-2">
+    <p>Similar Films</p>
+    <div>
+        <div class="film m-1">
+            <div class="row">
+                <div class="card col-md-4 col-lg-3" *ngFor="let similarFilm of similarFilms"
+                    (click)="detailsSimilarFilm(similarFilm)">
+                    <img class="card-img-top" src="{{films.imageLink + similarFilm?.poster_path}}"
+                        alt="{{similarFilm?.original_title}}">
+                    <div class="card-body">
+                        <h5 class="card-title d-flex justify-content-between">{{similarFilm?.title}}
+                            <span>{{similarFilm?.vote_average}}/10</span>
+                        </h5>
+                        <p class="card-text">{{similarFilm?.release_date}}</p>
+                        <p>Codice: {{similarFilm?.id}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

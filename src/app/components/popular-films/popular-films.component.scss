@@ -1,0 +1,25 @@
+@import '../../../partials/variables';
+
+.card {
+    border: none;
+    background-color: transparent;
+
+    // color: antiquewhite;
+    .card-img-top {
+        cursor: pointer;
+        height: auto;
+    }
+
+    .card-body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        >* {
+            height: 2.65rem !important;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}
