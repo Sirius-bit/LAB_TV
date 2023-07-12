@@ -1,5 +1,6 @@
 <!-- <p>search-bar works!</p> -->
 <div class="col m-auto m-2" id="search">
-    <input type="text" placeholder="Cerca..." *ngIf="searchBoolean" [(ngModel)]="search" name="search">
+    <input type="text" placeholder="Cerca..." *ngIf="searchBoolean" [(ngModel)]="search" name="search"
+        (keyup)="searchedFilm()">
     <img src="../../../assets/img/magnifying-glass.png" alt="" (click)="searchedFilm()" *ngIf="search">
 </div>

@@ -30,6 +30,9 @@ export class ContactComponent implements OnInit {
   }
 
   onSubmit = (form: FormGroup) => {
-
+    console.log('Valid?', form.valid)
+    console.log('Nome', form.value.nome)
+    console.log('Cognome', form.value.cognome)
+    console.log('Email', form.value.email)
   }
 }

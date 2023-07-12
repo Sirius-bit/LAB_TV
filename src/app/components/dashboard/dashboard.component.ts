@@ -10,18 +10,20 @@ import { VariablesComponentService } from 'src/app/services/variables-component.
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  responsiveOptions: { breakpoint: string; numVisible: number; numScroll: number; }[];
+  responsiveOptions: { breakpoint: string; numVisible: number; numScroll: number; }[]
 
   constructor(public getFilms: FilmsService, private route: Router, private headerFooter: VariablesComponentService) {
-    this.getFilmsFromService()
-    this.getPopularFromService()
+    this.getPopularFilmsFromService()
+    this.getNowPlayingFilmsFromService()
+    this.getTopRatedFilmsFromService()
+    this.getUpComingFilmsFromService()
     this.headerFooter.searchBar$.next(true)
     this.headerFooter.footer$.next(true)
 
     this.responsiveOptions = [
       {
         breakpoint: '1500px',
-        numVisible: 4,
+        numVisible: 6,
         numScroll: 1
       },
       {
@@ -36,30 +38,43 @@ export class DashboardComponent {
       },
       {
         breakpoint: '700px',
-        numVisible: 1,
+        numVisible: 3,
         numScroll: 1
       }
-    ];
+    ]
   }
 
-
-
-  getFilmsFromService = () => {
-    this.getFilms.getMovies().subscribe({
+  getPopularFilmsFromService = () => {
+    this.getFilms.getPopular().subscribe({
       next: (data: any) => {
         // console.log(data.results)
-        this.getFilms.films = data.results
+        this.getFilms.popularFilms = data.results
       },
       error: (err: any) => console.log(err)
-
     })
   }
 
-  getPopularFromService = () => {
-    this.getFilms.getPopular().subscribe({
+  getNowPlayingFilmsFromService = () => {
+    this.getFilms.getNowPlaying().subscribe({
       next: (value: any) => {
-        console.log(value.results)
-        this.getFilms.popularFilm = value.results
+        // console.log(value.results)
+        this.getFilms.nowPlayingFilms = value.results
+      }
+    })
+  }
+
+  getTopRatedFilmsFromService = () => {
+    this.getFilms.getTopRated().subscribe({
+      next: (value: any) => {
+        this.getFilms.topRatedFilms = value.results
+      }
+    })
+  }
+
+  getUpComingFilmsFromService = () => {
+    this.getFilms.getUpComing().subscribe({
+      next: (value: any) => {
+        this.getFilms.upComingFilms = value.results
       }
     })
   }

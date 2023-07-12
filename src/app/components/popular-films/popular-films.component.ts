@@ -9,13 +9,13 @@ import { FilmsService } from 'src/app/services/films.service';
 export class PopularFilmsComponent {
   constructor(protected getFilms: FilmsService) { }
 
-  @Input() popular: any
+  @Input() film: any
 
   @Output() details = new EventEmitter<any>
 
 
   goToDetails = () => {
-    console.log(this.popular);
-    this.details.emit(this.popular)
+    console.log(this.film);
+    this.details.emit(this.film)
   }
 }

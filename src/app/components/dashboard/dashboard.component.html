@@ -1,21 +1,47 @@
 <div class="container-fluid">
-    <p class="m-1 d-flex justify-content-between">Trending Now<button (click)="showFilms()">Mostra tutti</button></p>
-    <div>
-        <p-carousel [value]="getFilms.films ?? []" [numVisible]="5" [numScroll]="1" [circular]="true"
-            [showIndicators]="false" [responsiveOptions]="responsiveOptions">
-            <ng-template let-film pTemplate="item">
-                <div class="border-1 surface-border border-round m-2 text-center py-5 px-3 m-1">
-                    <app-catalog (details)="details($event)"></app-catalog>
-                </div>
-            </ng-template>
-        </p-carousel>
-    </div>
-    <p class="m-1 justify-content-space-between film">Popular</p>
-    <p-carousel [value]="getFilms.popularFilm" [numVisible]="5" [numScroll]="1" [circular]="true"
+    <p class="m-1 p-2 d-flex justify-content-between categoria">{{'Trending Now' | uppercase}}<button
+            (click)="showFilms()">Mostra
+            tutti</button>
+    </p>
+    <p-carousel [value]="getFilms.nowPlayingFilms ?? []" [numVisible]="5" [numScroll]="1" [circular]="true"
         [showIndicators]="false" [responsiveOptions]="responsiveOptions">
-        <ng-template let-popular pTemplate="item">
-            <div class="border-1 surface-border border-round m-2 text-center py-5 px-3 m-1">
-                <app-popular-films [popular]="popular" (details)="details($event)"></app-popular-films>
+        <ng-template let-film pTemplate="item">
+            <div class="border-1 surface-border border-round m-2 text-center">
+                <app-catalog [film]="film" (details)="details($event)"></app-catalog>
+            </div>
+        </ng-template>
+    </p-carousel>
+    <p class="m-1 p-2 d-flex justify-content-between categoria">{{'Popular' | uppercase}}<button
+            (click)="showFilms()">Mostra
+            tutti</button>
+    </p>
+    <p-carousel [value]="getFilms.popularFilms ?? []" [numVisible]="5" [numScroll]="1" [circular]="true"
+        [showIndicators]="false" [responsiveOptions]="responsiveOptions">
+        <ng-template let-film pTemplate="item">
+            <div class="border-1 surface-border border-round m-2 text-center">
+                <app-popular-films [film]="film" (details)="details($event)"></app-popular-films>
+            </div>
+        </ng-template>
+    </p-carousel>
+    <p class="m-1 p-2 d-flex justify-content-between categoria">{{'Up Coming' | uppercase}}<button
+            (click)="showFilms()">Mostra tutti</button>
+    </p>
+    <p-carousel [value]="getFilms.upComingFilms ?? []" [numVisible]="5" [numScroll]="1" [circular]="true"
+        [showIndicators]="false" [responsiveOptions]="responsiveOptions">
+        <ng-template let-film pTemplate="item">
+            <div class="border-1 surface-border border-round m-2 text-center">
+                <app-up-coming [film]="film" (details)="details($event)"></app-up-coming>
+            </div>
+        </ng-template>
+    </p-carousel>
+    <p class="m-1 p-2 d-flex justify-content-between categoria">{{'Top Rated' | uppercase}}<button
+            (click)="showFilms()">Mostra tutti</button>
+    </p>
+    <p-carousel [value]="getFilms.topRatedFilms ?? []" [numVisible]="5" [numScroll]="1" [circular]="true"
+        [showIndicators]="false" [responsiveOptions]="responsiveOptions">
+        <ng-template let-film pTemplate="item">
+            <div class="border-1 surface-border border-round m-2 text-center mb-3">
+                <app-top-rated [film]="film" (details)="details($event)"></app-top-rated>
             </div>
         </ng-template>
     </p-carousel>

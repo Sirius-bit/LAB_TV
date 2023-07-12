@@ -9,7 +9,7 @@ import { FilmsService } from 'src/app/services/films.service';
 })
 export class SearchedFilmsResultComponent {
 
-  constructor(private route: Router, private getFilms: FilmsService) { }
+  constructor(private route: Router, protected getFilms: FilmsService) { }
 
   @Input() movie?: any
 

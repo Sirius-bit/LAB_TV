@@ -1,17 +1,15 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Result } from 'src/app/interfaces/films';
 import { FilmsService } from 'src/app/services/films.service';
-import { environment } from 'src/environments/environment.development';
 
 @Component({
-  selector: 'app-catalog',
-  templateUrl: './catalog.component.html',
-  styleUrls: ['./catalog.component.scss']
+  selector: 'app-top-rated',
+  templateUrl: './top-rated.component.html',
+  styleUrls: ['./top-rated.component.scss']
 })
-export class CatalogComponent {
+export class TopRatedComponent {
 
   constructor(protected getFilms: FilmsService) { }
-
 
   @Input() film: Result | undefined = undefined
 

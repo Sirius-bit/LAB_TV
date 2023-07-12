@@ -1,15 +1,10 @@
 @import '../../../partials/variables';
 @import '../../../partials/fonts';
 
-
-
-.catalogo {
-    border: $black-border;
-}
-
 .container-fluid {
     margin-top: 2em;
     padding: 0;
+    background-color: $background;
 
     button {
         cursor: pointer;
@@ -19,8 +14,8 @@
         border-radius: 8px;
         padding: 2px 5px;
     }
-}
 
-#film {
-    flex-wrap: nowrap;
+    .categoria {
+        color: antiquewhite;
+    }
 }

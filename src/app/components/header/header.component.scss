@@ -21,17 +21,23 @@
     }
 
 
+    .nav-link {
+        transition: .2s ease-in-out;
+
+        &:hover {
+            background-color: antiquewhite;
+            border-radius: 10px;
+        }
+
+        &:last-of-type:hover {
+            background-color: crimson;
+        }
+
+    }
+
 }
 
-//     #nav {
-//         max-width: 30px;
-//         height: 25px;
-//         margin-right: 3%;
-//         cursor: pointer;
-//     }
-
-//     #nav img {
-//         width: 100%;
-//         height: 100%;
-//     }
-// }
+.navbar-light .navbar-toggler {
+    border: none;
+    outline: none;
+}

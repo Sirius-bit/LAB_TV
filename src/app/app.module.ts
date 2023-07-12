@@ -27,6 +27,8 @@ import { SimilarFilmsComponent } from './components/similar-films/similar-films.
 import { PopularFilmsComponent } from './components/popular-films/popular-films.component';
 import { SearchedMovieComponent } from './components/searched-movie/searched-movie.component';
 import { SearchedFilmsResultComponent } from './components/searched-films-result/searched-films-result.component';
+import { UpComingComponent } from './components/up-coming/up-coming.component';
+import { TopRatedComponent } from './components/top-rated/top-rated.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { SearchedFilmsResultComponent } from './components/searched-films-result
     SimilarFilmsComponent,
     PopularFilmsComponent,
     SearchedMovieComponent,
-    SearchedFilmsResultComponent
+    SearchedFilmsResultComponent,
+    UpComingComponent,
+    TopRatedComponent
 
   ],
   imports: [

@@ -1,3 +1,9 @@
 <!-- <p>searched-films-result works!</p> -->
-<img src="http://image.tmdb.org/t/p/original{{movie?.backdrop_path}}" [alt]="movie?.title" class="img-fluid"
-    (click)="goToDetails()" />
+<div class="card m-1 d-flex">
+    <img class="card-img-top" src="{{getFilms.imageLink + movie?.poster_path}}" alt="{{movie?.original_title}}">
+    <div class="card-body" (click)="goToDetails()">
+        <h5 class="card-title">{{movie?.title}}</h5>
+        <p class="card-text">{{movie?.release_date}}</p>
+        <p>Codice: {{movie?.id}}</p>
+    </div>
+</div>

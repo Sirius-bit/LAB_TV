@@ -1,7 +1,6 @@
 <div class="container-details">
     <div class="container-iframe">
-        <iframe class="responsive-iframe" *ngIf="videoKey" [src]="films.sanitizeUrl(videoKey)" allowfullscreen
-            allow='autoplay'></iframe>
+        <iframe class="responsive-iframe" *ngIf="videoKey" [src]="films.sanitizeUrl(videoKey)" allowfullscreen></iframe>
     </div>
     <div class="details m-2">
         <section class="info">
@@ -29,3 +28,6 @@
         </div>
     </div>
     <app-similar-films [similarFilms]="similarFilms" (details)="goToDetailSimilarFilm($event)"></app-similar-films>
+    <div class="d-flex justify-content-center m-3">
+        <button class="more" type="button" (click)="loadMore()">Mostra altri</button>
+    </div>

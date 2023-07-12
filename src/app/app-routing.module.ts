@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'film-details', component: FilmDetailsComponent },
   { path: 'films-list', component: FilmsListComponent },
   { path: 'searched-movie', component: SearchedMovieComponent },
+  { path: 'page-not-found', component: PageNotFoundComponent },
   { path: 'unauthorized', component: UnauthorizedComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }

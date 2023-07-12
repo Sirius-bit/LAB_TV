@@ -5,6 +5,7 @@ import { FilmsService } from 'src/app/services/films.service';
 import { VariablesComponentService } from 'src/app/services/variables-component.service';
 import { SimilarFilms } from 'src/app/interfaces/similar-films';
 import { Popular } from 'src/app/interfaces/popular-films';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-film-details',
@@ -21,10 +22,12 @@ export class FilmDetailsComponent implements OnDestroy {
   genres: string[] = []
   credits: string[] = []
   similarFilms: SimilarFilms[] = []
+  page: number = 1
 
   constructor(
     protected films: FilmsService,
-    private headerFooter: VariablesComponentService
+    private headerFooter: VariablesComponentService,
+    private route: Router
   ) {
     this.getFilm()
     this.headerFooter.searchBar$.next(false)
@@ -39,20 +42,34 @@ export class FilmDetailsComponent implements OnDestroy {
         this.getVideos(film?.id)
         this.getGenres(film?.id)
         this.getCredits(film?.id)
-        this.getSimilarFilms(film?.id)
+        this.getSimilarFilms(film?.id, this.page)
         // console.log(film?.id);
       }
     }))
   }
 
-  getSimilarFilms = (id: any) => {
-    this.subscription.add(this.films.getSimilarFilms(id).subscribe({
+  getSimilarFilms = (id: any, page: number) => {
+    this.subscription.add(this.films.getSimilarFilms(id, this.page).subscribe({
       next: (similarFilms) => {
         this.similarFilms = similarFilms.results
-        // console.log(similarFilms)
+        console.log(similarFilms)
         // console.log(this.similarFilms)
       }
     }))
+  }
+
+  loadMore = () => {
+    this.page++
+    this.showMoreFilms(this.film?.id, this.page)
+  }
+
+  showMoreFilms = (id: number, page: number) => {
+    this.films.getSimilarFilms(id, page).subscribe({
+      next: (data: any) => {
+        console.log(data)
+        this.similarFilms = this.similarFilms.concat(data.results)
+      }
+    })
   }
 
   getVideos = (id: any) => {
@@ -62,13 +79,13 @@ export class FilmDetailsComponent implements OnDestroy {
         const officialTrailerVideo = data.results.find((video: any) => video.name === "Official Trailer");
         if (officialTrailerVideo) {
           this.videoKey = officialTrailerVideo.key;
-          // console.log(this.videoKey);
+          console.log(this.videoKey);
         }
         else if (!officialTrailerVideo) {
           const officialTrailerVideo = data.results.find((video: any) => video.name.toLowerCase().includes("trailer"))
           console.log(officialTrailerVideo);
           this.videoKey = officialTrailerVideo.key
-          // console.log(this.videoKey)
+          console.log(this.videoKey)
         }
         else if (!officialTrailerVideo.key) {
           this.videoKey = officialTrailerVideo.key

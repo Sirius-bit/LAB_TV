@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { FilmsService } from 'src/app/services/films.service';
-import { SidebarService } from 'src/app/services/sidebar.service';
+import { SearchBarService } from 'src/app/services/search-bar.service';
 import { VariablesComponentService } from 'src/app/services/variables-component.service';
 
 @Component({
@@ -14,7 +14,8 @@ export class HeaderComponent {
   constructor(
     protected button_v: VariablesComponentService,
     private film: FilmsService,
-    private route: Router
+    private route: Router,
+    private searchBar: SearchBarService
   ) {
 
     this.button_v.buttonToggle$.subscribe({
@@ -31,10 +32,10 @@ export class HeaderComponent {
   @Input() movie?: any
 
   search = (value?: string) => {
-    this.film.getMovieSearched(value).subscribe({
+    this.searchBar.getMovieSearched(value).subscribe({
       next: (data: any) => {
         if (value) {
-          this.film.searchedFilms = data.results
+          this.searchBar.searchedFilms = data.results
           this.route.navigateByUrl('searched-movie')
           console.log(this.movie)
         }

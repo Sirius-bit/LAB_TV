@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FilmsService } from 'src/app/services/films.service';
+import { SearchBarService } from 'src/app/services/search-bar.service';
 
 @Component({
   selector: 'app-searched-movie',
@@ -9,6 +10,6 @@ import { FilmsService } from 'src/app/services/films.service';
 })
 export class SearchedMovieComponent {
 
-  constructor(private route: Router, public getFilm: FilmsService) { }
+  constructor(private route: Router, public search: SearchBarService) { }
 
 }

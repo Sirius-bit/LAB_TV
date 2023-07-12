@@ -17,7 +17,7 @@ export class FilmsListComponent {
   films?: Result[]
 
   getCompleteFilmList = () => {
-    this.getListFilm.getMovies().subscribe({
+    this.getListFilm.getNowPlaying().subscribe({
       next: (data: any) => {
         console.log(data.results)
         this.films = data.results
