@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { LoggedUser } from 'src/app/interfaces/user';
 import { RegisterService } from 'src/app/services/register.service';
 import { VariablesComponentService } from 'src/app/services/variables-component.service';
 
@@ -39,8 +39,11 @@ export class RegisterComponent {
       password: form.value.password,
       repeatPassword: form.value.repeatPassword
     }
-    console.log(body);
-    form.reset()
-    this.user.register(body)
+    console.log(body)
+    this.user.register(body).subscribe({
+      next: (data: LoggedUser) => {
+        console.log(data)
+      }
+    })
   }
 }

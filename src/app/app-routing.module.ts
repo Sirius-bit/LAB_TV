@@ -9,6 +9,8 @@ import { FilmsListComponent } from './components/films-list/films-list.component
 import { ContactComponent } from './components/contact/contact.component';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 import { SearchedMovieComponent } from './components/searched-movie/searched-movie.component';
+import { ReservedAreaFilmComponent } from './components/reserved-area-film/reserved-area-film.component';
+
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
@@ -18,6 +20,7 @@ const routes: Routes = [
   { path: 'films-list', component: FilmsListComponent },
   { path: 'searched-movie', component: SearchedMovieComponent },
   { path: 'page-not-found', component: PageNotFoundComponent },
+  { path: 'reserved-area', component: ReservedAreaFilmComponent },
   { path: 'unauthorized', component: UnauthorizedComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }

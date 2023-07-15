@@ -1,8 +1,11 @@
 <!-- <p>searched-movie works!</p> -->
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div *ngFor="let movie of search.searchedFilms" class="col-12 col-md-6 col-lg-4 py-2">
             <app-searched-films-result [movie]="movie"></app-searched-films-result>
         </div>
     </div>
+</div>
+<div class="d-flex justify-content-center m-3" *ngIf="variable_v.showMore">
+    <button class="more" type="button" (click)="loadMore()" *ngIf="variable_v.showMore">Mostra altri</button>
 </div>

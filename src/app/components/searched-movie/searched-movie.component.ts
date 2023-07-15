@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Result } from 'src/app/interfaces/films';
 import { FilmsService } from 'src/app/services/films.service';
 import { SearchBarService } from 'src/app/services/search-bar.service';
+import { VariablesComponentService } from 'src/app/services/variables-component.service';
 
 @Component({
   selector: 'app-searched-movie',
@@ -10,6 +12,24 @@ import { SearchBarService } from 'src/app/services/search-bar.service';
 })
 export class SearchedMovieComponent {
 
-  constructor(private route: Router, public search: SearchBarService) { }
+  constructor(private route: Router, protected search: SearchBarService, private getMoreFilms: SearchBarService, protected variable_v: VariablesComponentService) {
+    variable_v.searchBar$.next(true)
+  }
 
+  page: number = 1
+
+  loadMore = () => {
+    this.page++
+    this.showMoreFilms(this.page)
+  }
+
+
+  showMoreFilms = (page: number) => {
+    this.getMoreFilms.getMovieSearched(this.search.valueSearch$, page).subscribe({
+      next: (data: any) => {
+        this.search.searchedFilms = this.search.searchedFilms?.concat(data.results)
+
+      }
+    })
+  }
 }

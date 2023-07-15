@@ -17,7 +17,7 @@
                 <div class="cast">
                     <p class="cast">Cast: <span>{{credits}}</span> </p>
                 </div>
-                <button type="button" class="button">Acquista</button>
+                <button type="button" class="button" (click)="buyMovie(film)">Acquista</button>
             </div>
         </section>
         <div class="trama">
@@ -28,6 +28,6 @@
         </div>
     </div>
     <app-similar-films [similarFilms]="similarFilms" (details)="goToDetailSimilarFilm($event)"></app-similar-films>
-    <div class="d-flex justify-content-center m-3">
-        <button class="more" type="button" (click)="loadMore()">Mostra altri</button>
+    <div class="d-flex justify-content-center m-3" *ngIf="variable_v.showMore">
+        <button class="more" type="button" (click)="loadMore()" *ngIf="variable_v.showMore">Mostra altri</button>
     </div>

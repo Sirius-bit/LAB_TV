@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Result } from '../interfaces/films';
 import { DomSanitizer } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment.development';
-import { Films } from '../interfaces/films';
 
 @Injectable({
   providedIn: 'root'

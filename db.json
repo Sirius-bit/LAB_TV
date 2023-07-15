@@ -1,5 +1,25 @@
 {
-  "users": [],
+  "users": [
+    {
+      "email": "test.test@gmail.com",
+      "password": "$2a$10$N7EBzaXW7dBOy.WOT.Cg2.ixVX85QBsRzj9E9GhnmVnDDyhEo2m0W",
+      "repeatPassword": "cicciooo",
+      "id": 1
+    }
+  ],
   "posts": [],
-  "films-acquistati": []
+  "films-acquistati": [
+    {
+      "id": 678512,
+      "title": "Sound of Freedom",
+      "image": "/mx4O9OEvIB265VM3UATLslsSW5t.jpg",
+      "date": "2023-07-03"
+    },
+    {
+      "id": 346698,
+      "title": "Barbie",
+      "image": "/cgYg04miVQUAG2FKk3amSnnHzOp.jpg",
+      "date": "2023-07-19"
+    }
+  ]
 }

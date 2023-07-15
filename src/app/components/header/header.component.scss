@@ -7,7 +7,7 @@
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000;
+    z-index: 100;
 
     #logo {
         height: 50px;
@@ -28,16 +28,20 @@
             background-color: antiquewhite;
             border-radius: 10px;
         }
-
-        &:last-of-type:hover {
-            background-color: crimson;
-        }
-
     }
+
 
 }
 
 .navbar-light .navbar-toggler {
     border: none;
     outline: none;
+}
+
+@media(max-width:995px) {
+    .nav-link {
+        display: inline-block;
+        margin: 0 auto;
+        padding: 7px 10px;
+    }
 }

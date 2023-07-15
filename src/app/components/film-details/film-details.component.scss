@@ -27,7 +27,6 @@
 
     .info {
         background-color: crimson;
-        height: fit-content;
         border-radius: 10px;
         padding: 10px;
 
@@ -78,4 +77,12 @@
     border: none;
     background-color: transparent;
     color: antiquewhite;
+}
+
+@media (min-width:991px) {
+
+    .trama,
+    .info {
+        width: 100%;
+    }
 }

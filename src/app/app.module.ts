@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -29,6 +29,8 @@ import { SearchedMovieComponent } from './components/searched-movie/searched-mov
 import { SearchedFilmsResultComponent } from './components/searched-films-result/searched-films-result.component';
 import { UpComingComponent } from './components/up-coming/up-coming.component';
 import { TopRatedComponent } from './components/top-rated/top-rated.component';
+import { ReservedAreaFilmComponent } from './components/reserved-area-film/reserved-area-film.component';
+import { AuthInterceptor } from './interceptor/authentication';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,8 @@ import { TopRatedComponent } from './components/top-rated/top-rated.component';
     SearchedMovieComponent,
     SearchedFilmsResultComponent,
     UpComingComponent,
-    TopRatedComponent
+    TopRatedComponent,
+    ReservedAreaFilmComponent
 
   ],
   imports: [
@@ -64,7 +67,7 @@ import { TopRatedComponent } from './components/top-rated/top-rated.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

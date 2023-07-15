@@ -6,6 +6,7 @@ import { VariablesComponentService } from 'src/app/services/variables-component.
 import { SimilarFilms } from 'src/app/interfaces/similar-films';
 import { Popular } from 'src/app/interfaces/popular-films';
 import { Router } from '@angular/router';
+import { BuyMediaService } from 'src/app/services/buy-film.service';
 
 @Component({
   selector: 'app-film-details',
@@ -26,12 +27,13 @@ export class FilmDetailsComponent implements OnDestroy {
 
   constructor(
     protected films: FilmsService,
-    private headerFooter: VariablesComponentService,
-    private route: Router
+    protected variable_v: VariablesComponentService,
+    private route: Router,
+    private buyMedia: BuyMediaService
   ) {
     this.getFilm()
-    this.headerFooter.searchBar$.next(false)
-    this.headerFooter.footer$.next(false)
+    this.variable_v.searchBar$.next(false)
+    this.variable_v.footer$.next(false)
   }
 
   getFilm = () => {
@@ -46,14 +48,17 @@ export class FilmDetailsComponent implements OnDestroy {
         // console.log(film?.id);
       }
     }))
+
   }
 
   getSimilarFilms = (id: any, page: number) => {
     this.subscription.add(this.films.getSimilarFilms(id, this.page).subscribe({
       next: (similarFilms) => {
-        this.similarFilms = similarFilms.results
-        console.log(similarFilms)
-        // console.log(this.similarFilms)
+        if (similarFilms) {
+          this.variable_v.showMore = true
+          this.similarFilms = similarFilms.results
+          console.log(similarFilms)
+        }
       }
     }))
   }
@@ -66,7 +71,6 @@ export class FilmDetailsComponent implements OnDestroy {
   showMoreFilms = (id: number, page: number) => {
     this.films.getSimilarFilms(id, page).subscribe({
       next: (data: any) => {
-        console.log(data)
         this.similarFilms = this.similarFilms.concat(data.results)
       }
     })
@@ -75,21 +79,17 @@ export class FilmDetailsComponent implements OnDestroy {
   getVideos = (id: any) => {
     this.subscription.add(this.films.getVideos(id).subscribe({
       next: (data: any) => {
-        // console.log(data)
         const officialTrailerVideo = data.results.find((video: any) => video.name === "Official Trailer");
         if (officialTrailerVideo) {
-          this.videoKey = officialTrailerVideo.key;
-          console.log(this.videoKey);
+          this.videoKey = officialTrailerVideo.key
         }
         else if (!officialTrailerVideo) {
           const officialTrailerVideo = data.results.find((video: any) => video.name.toLowerCase().includes("trailer"))
           console.log(officialTrailerVideo);
           this.videoKey = officialTrailerVideo.key
-          console.log(this.videoKey)
         }
         else if (!officialTrailerVideo.key) {
           this.videoKey = officialTrailerVideo.key
-          console.log(this.videoKey)
         }
 
       }
@@ -122,6 +122,16 @@ export class FilmDetailsComponent implements OnDestroy {
           // console.log(this.director)
         }
       }
+    })
+  }
+
+  buyMovie = (film: Result) => {
+    console.log(film)
+    this.buyMedia.postMedia(film).subscribe({
+      next: (data: any) => {
+        console.log('film post', data)
+      },
+      error: (err: any) => console.log('errore', err)
     })
   }
 

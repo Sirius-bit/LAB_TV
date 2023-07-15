@@ -12,32 +12,33 @@ import { VariablesComponentService } from 'src/app/services/variables-component.
 export class HeaderComponent {
 
   constructor(
-    protected button_v: VariablesComponentService,
+    protected variable_v: VariablesComponentService,
     private film: FilmsService,
     private route: Router,
     private searchBar: SearchBarService
   ) {
 
-    this.button_v.buttonToggle$.subscribe({
+    this.variable_v.buttonToggle$.subscribe({
       next: (value: boolean) => {
         this.buttonToggle = value
-        // console.log(this.buttonToggle);
       }
     })
   }
 
   buttonToggle?: boolean
+  page: number = 1
 
 
   @Input() movie?: any
 
   search = (value?: string) => {
-    this.searchBar.getMovieSearched(value).subscribe({
+    this.searchBar.getMovieSearched(value, this.page).subscribe({
       next: (data: any) => {
         if (value) {
-          this.searchBar.searchedFilms = data.results
+          this.searchBar.valueSearch$ = value
+          this.variable_v.showMore = true
           this.route.navigateByUrl('searched-movie')
-          console.log(this.movie)
+          this.searchBar.searchedFilms = data.results
         }
         else {
           this.route.navigateByUrl('dashboard')
