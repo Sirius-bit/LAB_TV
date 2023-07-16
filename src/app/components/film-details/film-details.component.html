@@ -17,7 +17,17 @@
                 <div class="cast">
                     <p class="cast">Cast: <span>{{credits}}</span> </p>
                 </div>
-                <button type="button" class="button" (click)="buyMovie(film)">Acquista</button>
+                <button type="button" class="button" (click)="buyMovie()">Acquista</button>
+                <dialog>
+                    <i class="bi bi-x close"></i>
+                    <p *ngIf="operationFailed">L'operazione non è andata a buon fine</p>
+
+                    <p>Vuoi acquistare questo film?</p>
+                    <div class="button-dlg">
+                        <button type="button" (click)="buyOrNot(true,film)">Si</button>
+                        <button type="button" (click)="buyOrNot(false)">No</button>
+                    </div>
+                </dialog>
             </div>
         </section>
         <div class="trama">

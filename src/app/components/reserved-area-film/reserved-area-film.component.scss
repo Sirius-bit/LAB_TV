@@ -14,7 +14,12 @@
         &:hover {
             color: crimson;
         }
+
+        .delete:hover {
+            transform: scale(1.2);
+        }
     }
+
 
     hr {
         border: 1px solid antiquewhite;
@@ -58,5 +63,11 @@
 
 
         }
+    }
+
+    #delete {
+        position: relative;
+        z-index: 100;
+        cursor: pointer;
     }
 }

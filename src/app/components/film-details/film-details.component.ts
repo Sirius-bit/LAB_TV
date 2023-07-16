@@ -16,7 +16,7 @@ import { BuyMediaService } from 'src/app/services/buy-film.service';
 export class FilmDetailsComponent implements OnDestroy {
 
   private subscription: Subscription = new Subscription();
-  film?: Result | Popular | any
+  film?: Result | any
   videoKey: string = ''
   urlVideo: string = ''
   director: string = ''
@@ -24,6 +24,7 @@ export class FilmDetailsComponent implements OnDestroy {
   credits: string[] = []
   similarFilms: SimilarFilms[] = []
   page: number = 1
+  operationFailed: boolean = false
 
   constructor(
     protected films: FilmsService,
@@ -125,14 +126,22 @@ export class FilmDetailsComponent implements OnDestroy {
     })
   }
 
-  buyMovie = (film: Result) => {
-    console.log(film)
-    this.buyMedia.postMedia(film).subscribe({
-      next: (data: any) => {
-        console.log('film post', data)
-      },
-      error: (err: any) => console.log('errore', err)
-    })
+  buyMovie = () => {
+    const dialog = document.querySelector('dialog')
+    dialog?.showModal()
+  }
+
+  buyOrNot = (buy: boolean, film?: any) => {
+    const dialog = document.querySelector('dialog')
+    if (buy) {
+      this.buyMedia.postMedia(film).subscribe({
+        next: (data: any) => {
+          console.log('film post', data)
+        },
+        error: (err: any) => this.operationFailed = true
+      })
+    }
+    dialog?.close()
   }
 
   goToDetailSimilarFilm = (similarFilm: any) => {

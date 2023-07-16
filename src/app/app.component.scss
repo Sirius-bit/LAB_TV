@@ -137,19 +137,23 @@ table {
 * {
     box-sizing: border-box;
     font-family: 'Jost' !important;
+    scroll-behavior: smooth;
 }
 
 .container-fluid {
     width: 100%;
     height: 100vh;
-    // overflow: hidden;
     background-color: #2e2c2c;
 }
 
 marquee {
-    height: 2rem;
     height: auto;
     color: #2e2c2c;
+
+    span {
+        margin-left: 3rem;
+        text-transform: uppercase;
+    }
 }
 
 // app-header {

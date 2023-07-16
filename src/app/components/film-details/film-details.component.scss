@@ -6,12 +6,14 @@
     color: antiquewhite;
     background-color: #000;
     margin: 0;
+    overflow-y: hidden;
 
     .container-iframe {
         position: relative;
         overflow: hidden;
         width: 100%;
         padding-top: 56.25%;
+        margin-top: .8rem;
 
         .responsive-iframe {
             position: absolute;
@@ -71,6 +73,43 @@
         }
     }
 
+}
+
+dialog {
+    text-align: center;
+    width: 400px;
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 2rem;
+    position: relative;
+
+    .close {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .button-dlg {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        margin-top: 2rem;
+
+        button {
+            padding: 5px 20px;
+            transition: all .2s ease-in-out;
+
+            &:first-of-type:hover {
+                background-color: #fca311;
+                color: antiquewhite;
+            }
+
+            &:last-of-type:hover {
+                background-color: crimson;
+                color: antiquewhite;
+            }
+        }
+    }
 }
 
 .more {

@@ -1,5 +1,5 @@
 <!-- <p>similar-films works!</p> -->
-<div class="similar-films">
+<div class="similar-films p-3">
     <p>{{'Similar Films' | uppercase}}</p>
     <div>
         <div class="film">
@@ -8,7 +8,9 @@
                     <div class="card col-md-4 col-lg-3 mb-2" *ngFor="let similarFilm of similarFilms"
                         (click)="detailsSimilarFilm(similarFilm)">
                         <img class="card-img-top" src="{{films.imageLink + similarFilm?.poster_path}}"
-                            alt="{{similarFilm?.original_title}}">
+                            alt="{{similarFilm?.original_title}}"
+                            onerror="this.onerror=null; this.src='../../../assets/img/image-not-found.webp'"
+                            width="100%" height="100%">
                         <div class="card-body">
                             <h5 class="card-title">{{similarFilm?.title}}</h5>
                             <p class="card-text">{{similarFilm?.release_date}}</p>

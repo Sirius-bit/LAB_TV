@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BuyedFilm } from 'src/app/interfaces/buyed-film';
 import { BuyMediaService } from 'src/app/services/buy-film.service';
 
 @Component({
@@ -12,6 +13,7 @@ export class ReservedAreaFilmComponent {
     this.getBuyedMedia()
   }
 
+  deleteFilm: boolean = false
   buyedFilms: any[] = []
 
   getBuyedMedia = () => {
@@ -23,4 +25,13 @@ export class ReservedAreaFilmComponent {
     })
   }
 
+  delete = () => {
+    this.deleteFilm = !this.deleteFilm
+  }
+
+  deleteFilmFromArea = (film: any) => {
+    this.buyedFilm.deleteMedia(film.id)
+    const index = this.buyedFilms.indexOf(film)
+    this.buyedFilms.splice(index, 1)
+  }
 }

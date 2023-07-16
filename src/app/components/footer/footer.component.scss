@@ -2,14 +2,14 @@
 @import '../../../partials/fonts';
 
 #footer {
-    // border: $black-border;
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
-    // flex-direction: column;
-    // gap: 10px;
-    // width: 100%;
-    // background-color: #fca311;
+    border: $black-border;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    background-color: #fca311;
 
     #img {
         width: 25%;

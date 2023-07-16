@@ -1,8 +1,9 @@
 <!-- <p>reserved-area-film works!</p> -->
 <div class="container-fluid">
     <div>
-        <h1 class="p-3 d-flex justify-content-between align-items-center">Area Riservata <span
-                routerLink="/dashboard">Torna in dashboard</span>
+        <h1 class="p-3 d-flex justify-content-between align-items-center">Area Riservata <span class="delete"
+                (click)="delete()"><i class="bi bi-trash-fill"></i></span> <span routerLink="/dashboard">Torna in
+                dashboard</span>
         </h1>
     </div>
     <div class="d-flex">
@@ -13,5 +14,7 @@
                 <p class="card-text">{{film?.date}}</p>
                 <p>Codice: {{film?.id}}</p>
             </div>
+            <i class="bi bi-trash-fill text-center mt-2" id="delete" *ngIf="deleteFilm"
+                (click)="deleteFilmFromArea(film)"></i>
         </div>
     </div>

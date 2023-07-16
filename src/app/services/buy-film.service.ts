@@ -1,10 +1,10 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Films, Result } from 'src/app/interfaces/films';
 import { Router } from '@angular/router';
-import { Details } from 'src/app/interfaces/film-details';
 import { RegisterService } from './register.service';
+import { BuyedFilm } from '../interfaces/buyed-film';
 
 @Injectable({
   providedIn: 'root'
@@ -21,19 +21,22 @@ export class BuyMediaService {
     return this.http.get<Films[]>(this.url + 'films-acquistati')
   }
 
-  postMedia = (film: any): Observable<any[]> => {
+  postMedia = (film: Result): Observable<BuyedFilm[]> => {
     const loggedUser = this.authService.getLoggedUser()
     const body = {
+      date: film.release_date,
       id: film.id,
-      title: film.title,
       image: film.poster_path,
-      date: film.release_date
+      title: film.title
     }
-    console.log(loggedUser)
     if (loggedUser) {
-      return this.http.post<any[]>(this.url + 'films-acquistati', body)
+      return this.http.post<BuyedFilm[]>(this.url + 'films-acquistati', body)
     }
     this.router.navigate(['/login'])
     return of([])
+  }
+
+  deleteMedia = (id: any) => {
+    this.http.delete(`${this.url}films-acquistati/${id}`).subscribe()
   }
 }
