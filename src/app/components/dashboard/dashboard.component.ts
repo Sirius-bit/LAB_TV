@@ -89,7 +89,9 @@ export class DashboardComponent {
 
   details = (film: Result) => {
     this.getFilms.filmToShow$.next(film)
-    this.route.navigateByUrl('film-details')
+    localStorage.setItem('id', film.id.toString())
+    const id = localStorage.getItem('id')
+    this.route.navigate(['film-details', id])
   }
 
   showFilms = (type: string) => {

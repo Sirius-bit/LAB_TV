@@ -46,4 +46,8 @@ export class HeaderComponent {
       }
     })
   }
+
+  deleteUser = () => {
+    localStorage.clear()
+  }
 }

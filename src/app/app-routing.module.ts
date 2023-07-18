@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'film-details', component: FilmDetailsComponent },
+  { path: 'film-details/:id', component: FilmDetailsComponent },
   { path: 'films-list', component: FilmsListComponent },
   { path: 'searched-movie', component: SearchedMovieComponent },
   { path: 'page-not-found', component: PageNotFoundComponent },
