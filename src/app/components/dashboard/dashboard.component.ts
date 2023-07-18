@@ -12,13 +12,14 @@ import { VariablesComponentService } from 'src/app/services/variables-component.
 export class DashboardComponent {
   responsiveOptions: { breakpoint: string; numVisible: number; numScroll: number; }[]
 
-  constructor(public getFilms: FilmsService, private route: Router, private headerFooter: VariablesComponentService) {
+  constructor(public getFilms: FilmsService, private route: Router, protected variable: VariablesComponentService) {
     this.getPopularFilmsFromService()
     this.getNowPlayingFilmsFromService()
     this.getTopRatedFilmsFromService()
     this.getUpComingFilmsFromService()
-    this.headerFooter.searchBar$.next(true)
-    this.headerFooter.footer$.next(true)
+    this.variable.searchBar$.next(true)
+    this.variable.footer$.next(true)
+    this.variable.buttonToggle$.next(true)
 
     this.responsiveOptions = [
       {
@@ -38,11 +39,18 @@ export class DashboardComponent {
       },
       {
         breakpoint: '700px',
-        numVisible: 3,
+        numVisible: 1,
         numScroll: 1
       }
     ]
   }
+
+  page: number = 1
+  nowPlaying: string = 'now_playing'
+  popular: string = 'popular'
+  upComing: string = 'upcoming'
+  topRated: string = 'top_rated'
+
 
   getPopularFilmsFromService = () => {
     this.getFilms.getPopular().subscribe({
@@ -84,7 +92,15 @@ export class DashboardComponent {
     this.route.navigateByUrl('film-details')
   }
 
-  showFilms = () => {
+  showFilms = (type: string) => {
+    this.getFilms.getFilmFromSlider(type, this.page).subscribe({
+      next: (listFilm: any) => {
+        if (listFilm) {
+          this.getFilms.similarFilmsFromSlider = listFilm.results
+          console.log(listFilm)
+        }
+      }
+    })
     this.route.navigateByUrl('films-list')
   }
 }

@@ -6,24 +6,27 @@
     padding: 20px;
     background-color: #f8f9fa;
     border: 1px solid #ced4da;
-    margin-top: 10rem;
+    margin-top: 5%;
 }
 
 .arrow-up-error {
+    width: 90%;
     position: relative;
     background-color: #fca311;
     border-radius: 5px;
-    -webkit-transition: .3s ease-in-out;
-    -o-transition: .3s ease-in-out;
-    transition: .3s ease-in-out;
-    padding: 5px;
+    padding: 0;
+    opacity: 0;
+    visibility: hidden;
     text-align: center;
     font-size: small;
     margin-top: .4rem;
+    transition: .4s ease-in-out;
 }
 
-.form .arrow-up-error {
-    width: 90%;
+.arrow-up-error.show {
+    opacity: 1;
+    visibility: visible;
+    padding: 5px;
 }
 
 .arrow-up-error::before {
@@ -59,7 +62,6 @@
 
 .form input:focus {
     outline: none;
-    box-shadow: 0 0 0 2px #f1c40f;
 }
 
 
@@ -98,4 +100,30 @@ input[type="checkbox"] {
 
 input[type="checkbox"]:checked {
     background-color: #c1121f;
+}
+
+.button-register {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 1rem;
+
+    button {
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        background-color: #f1c40f;
+        color: #fff;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+}
+
+.credenziali {
+    margin: 0 auto;
+    margin-top: 1rem;
+
+    &::before {
+        border: 0;
+    }
 }

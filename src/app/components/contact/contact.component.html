@@ -4,9 +4,9 @@
         <h3>Richiedi informazioni</h3>
         <div>
             <label for="nome">Nome</label>
-            <input type="text" id="nome" placeholder="Nome" formControlName="nome">
+            <input type="text" id="nome" name="nome" placeholder="Nome" formControlName="nome">
             <div class="arrow-up-error"
-                *ngIf="myForm.get('nome').invalid && (myForm.get('nome').touched || myForm.submitted)">
+                [ngClass]="{show :myForm.get('nome').invalid && (myForm.get('nome').touched || myForm.submitted)}">
                 <div *ngIf="myForm.get('nome').errors?.required">
                     Il nome è obbligatorio
                 </div>
@@ -17,9 +17,9 @@
         </div>
         <div>
             <label for="cognome">Cognome</label>
-            <input type="text" id="cognome" placeholder="Cognome" formControlName="cognome">
+            <input type="text" id="cognome" name="cognome" placeholder="Cognome" formControlName="cognome">
             <div class="arrow-up-error"
-                *ngIf="myForm.get('cognome').invalid && (myForm.get('cognome').touched || myForm.submitted)">
+                [ngClass]="{show : myForm.get('cognome').invalid && (myForm.get('cognome').touched || myForm.submitted)}">
                 <div *ngIf="myForm.get('cognome').errors?.required">
                     Il cognome è obbligatorio
                 </div>
@@ -33,7 +33,7 @@
             <input type="email" name="email" id="email-message" placeholder="Email" autocomplete="off"
                 formControlName="email">
             <div class="arrow-up-error"
-                *ngIf="myForm.get('email').invalid && (myForm.get('email').touched || myForm.submitted)">
+                [ngClass]="{show : myForm.get('email').invalid && (myForm.get('email').touched || myForm.submitted)}">
                 <div *ngIf="myForm.get('email').errors?.required">
                     L'email è obbligatoria
                 </div>
@@ -44,9 +44,9 @@
         </div>
         <div>
             <label for="telefono">Telefono</label>
-            <input type="text" id="telefono" placeholder="Telefono" formControlName="telefono">
+            <input type="text" id="telefono" name="telefono" placeholder="Telefono" formControlName="telefono">
             <div class="arrow-up-error"
-                *ngIf="myForm.get('telefono').invalid && (myForm.get('telefono').touched || myForm.submitted)">
+                [ngClass]="{show : myForm.get('telefono').invalid && (myForm.get('telefono').touched || myForm.submitted)}">
                 <div *ngIf="myForm.get('telefono').errors?.required">
                     Il telefono è obbligatorio
                 </div>
@@ -60,7 +60,7 @@
             <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Inserisci il messaggio"
                 formControlName="messaggio"></textarea>
             <div class="arrow-up-error"
-                *ngIf="myForm.get('messaggio').invalid && (myForm.get('messaggio').touched || myForm.submitted)">
+                [ngClass]="{show : myForm.get('messaggio').invalid && (myForm.get('messaggio').touched || myForm.submitted)}">
                 <div *ngIf="myForm.get('messaggio').errors?.required">
                     Il messaggio è obbligatorio
                 </div>
@@ -75,14 +75,15 @@
             </div>
         </div>
         <div class="privacy">
-            <input type="checkbox" name="privacy" id="privacy-contact" formControlName="checkbox">
-            <label for="privacy-contact" aria-labelledby="Accettazione privacy" class="label-privacy">Accetta le nostre
-                politiche di privacy</label>
+            <input type="checkbox" name="privacy" id="privacy" formControlName="checkbox">
+            <label for="privacy">Accetta le nostre politiche di privacy</label>
             <div class="arrow-up-error"
-                *ngIf="myForm.get('checkbox').invalid && (myForm.get('checkbox').touched || myForm.submitted)">
-                Devi accettare le nostre politiche di privacy
+                [ngClass]="{show : myForm.get('checkbox').invalid && (myForm.get('checkbox').touched || myForm.submitted)}">
+                <div *ngIf="myForm.get('checkbox').errors?.required">
+                    Accettazione della privacy (obbligatoria)
+                </div>
             </div>
         </div>
-        <button type="submit" class="submit">Invia</button>
+        <button type="submit" class="submit" (click)="myForm.submitted = true">Invia</button>
     </form>
 </div>

@@ -1,12 +1,5 @@
 {
   "users": [],
   "posts": [],
-  "films-acquistati": [
-    {
-      "date": "2023-05-03",
-      "id": 447365,
-      "image": "/r2J02Z2OpNTctfOSN1Ydgii51I3.jpg",
-      "title": "Guardians of the Galaxy Vol. 3"
-    }
-  ]
+  "films-acquistati": []
 }

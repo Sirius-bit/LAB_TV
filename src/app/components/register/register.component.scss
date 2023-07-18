@@ -1,31 +1,37 @@
+@import '../../../partials/variables';
+
 .form {
     width: 80%;
+    max-width: 400px;
     height: auto;
     margin: 0 auto;
     border-radius: 20px;
     padding: 20px;
     background-color: #f8f9fa;
     border: 1px solid #ced4da;
-    margin-top: 10rem;
+    margin-top: 5%;
+    transition: all .4s ease-in-out;
+    position: relative;
 }
 
 .arrow-up-error {
     position: relative;
     background-color: #fca311;
     border-radius: 5px;
-    transition: .3s ease-in-out;
-    padding: 5px;
+    padding: 0px;
     text-align: center;
     font-size: small;
     margin-top: .4rem;
+    width: 80%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .4s ease-in-out;
 }
 
-.field {
-    margin-bottom: 1rem;
-}
-
-.form .arrow-up-error {
-    width: 40%;
+.arrow-up-error.show {
+    opacity: 1;
+    visibility: visible;
+    padding: 5px;
 }
 
 .arrow-up-error::before {
@@ -38,6 +44,10 @@
     position: absolute;
     top: -4px;
     left: 2%;
+}
+
+.field {
+    margin-bottom: .1rem;
 }
 
 .form h2 {
@@ -63,16 +73,26 @@
     outline: none;
 }
 
+.button-register {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 1rem;
 
-.form button {
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    background-color: #f1c40f;
-    color: #fff;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    margin-top: 20px;
+    button {
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        background-color: #f1c40f;
+        color: #fff;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+}
+
+dialog {
+    position: absolute;
+    top: 50%;
 }
 
 .form button[type='submit']:hover {
@@ -99,8 +119,19 @@ input[type="checkbox"]:checked {
 
 .privacy {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    margin-top: 1rem;
+    height: auto;
+    margin-top: .7rem;
+
+    .arrow-up-error {
+        flex: 1;
+
+        &::before {
+            left: .7%;
+        }
+
+    }
 }
 
 .privacy label {
@@ -113,4 +144,18 @@ input[type="checkbox"]:checked {
 
 button:focus {
     outline: none;
+}
+
+.link-home {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.credenziali {
+    margin: 0 auto;
+    margin-top: 1rem;
+
+    &::before {
+        border: 0;
+    }
 }

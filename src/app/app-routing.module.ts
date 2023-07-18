@@ -10,8 +10,10 @@ import { ContactComponent } from './components/contact/contact.component';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 import { SearchedMovieComponent } from './components/searched-movie/searched-movie.component';
 import { ReservedAreaFilmComponent } from './components/reserved-area-film/reserved-area-film.component';
+import { EnterComponent } from './components/enter/enter.component';
 
 const routes: Routes = [
+  { path: 'enter', component: EnterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'dashboard', component: DashboardComponent },
@@ -22,7 +24,7 @@ const routes: Routes = [
   { path: 'page-not-found', component: PageNotFoundComponent },
   { path: 'reserved-area', component: ReservedAreaFilmComponent },
   { path: 'unauthorized', component: UnauthorizedComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/enter', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
 

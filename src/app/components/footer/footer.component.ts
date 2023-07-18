@@ -10,12 +10,14 @@ export class FooterComponent {
 
   constructor(private footer_v: VariablesComponentService) {
 
-    this.footer_v.searchBar$.subscribe({
+    this.footer_v.footer$.subscribe({
       next: (value) => {
         // console.log(value)
         this.footer = value
       }
     })
   }
+
+
   footer: any
 }

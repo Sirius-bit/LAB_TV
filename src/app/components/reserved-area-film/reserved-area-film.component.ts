@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BuyedFilm } from 'src/app/interfaces/buyed-film';
 import { BuyMediaService } from 'src/app/services/buy-film.service';
+import { VariablesComponentService } from 'src/app/services/variables-component.service';
 
 @Component({
   selector: 'app-reserved-area-film',
@@ -9,8 +10,9 @@ import { BuyMediaService } from 'src/app/services/buy-film.service';
 })
 export class ReservedAreaFilmComponent {
 
-  constructor(protected buyedFilm: BuyMediaService) {
+  constructor(protected buyedFilm: BuyMediaService, private variable: VariablesComponentService) {
     this.getBuyedMedia()
+    variable.footer$.next(false)
   }
 
   deleteFilm: boolean = false

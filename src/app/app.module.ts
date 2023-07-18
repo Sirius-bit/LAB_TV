@@ -31,6 +31,7 @@ import { UpComingComponent } from './components/up-coming/up-coming.component';
 import { TopRatedComponent } from './components/top-rated/top-rated.component';
 import { ReservedAreaFilmComponent } from './components/reserved-area-film/reserved-area-film.component';
 import { AuthInterceptor } from './interceptor/authentication';
+import { EnterComponent } from './components/enter/enter.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { AuthInterceptor } from './interceptor/authentication';
     SearchedFilmsResultComponent,
     UpComingComponent,
     TopRatedComponent,
-    ReservedAreaFilmComponent
+    ReservedAreaFilmComponent,
+    EnterComponent
 
   ],
   imports: [

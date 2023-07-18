@@ -39,10 +39,10 @@ export class LoginComponent implements OnInit {
       this.auth.login(this.myForm.getRawValue()).subscribe(u => {
         this.auth.setLoggedUser(u)
         this.route.navigateByUrl('/dashboard')
-        console.log(u)
-        console.log('Valid?', form.valid); // true or false
-        console.log('Email', form.value.email)
-        console.log('password', form.value.password)
+        // console.log(u)
+        // console.log('Valid?', form.valid); // true or false
+        // console.log('Email', form.value.email)
+        // console.log('password', form.value.password)
       })
     }
   }

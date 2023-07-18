@@ -29,13 +29,12 @@
             opacity: 0;
             transition: .2s ease-in-out;
             cursor: pointer;
+            padding: 0;
 
             &:hover {
                 opacity: 1;
                 visibility: visible;
             }
-
-
         }
     }
 }

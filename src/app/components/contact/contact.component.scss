@@ -36,18 +36,6 @@
     height: 13rem;
 }
 
-.privacy {
-    display: flex;
-    align-items: center;
-}
-
-.privacy label {
-    margin: 0 0 0 10px;
-}
-
-.privacy input[type='checkbox'] {
-    width: auto;
-}
 
 .form-contact input,
 .form-contact textarea {
@@ -59,7 +47,6 @@
 .form-contact input:focus,
 .form-contact textarea:focus {
     outline: none;
-    box-shadow: 0 0 0 2px #f1c40f;
 }
 
 .form-contact button[type='submit'] {
@@ -78,15 +65,23 @@
 }
 
 .arrow-up-error {
+    width: 90%;
     position: relative;
     background-color: #fca311;
     border-radius: 5px;
-    transition: .3s ease-in-out;
-    padding: 5px;
+    padding: 0;
+    opacity: 0;
+    visibility: hidden;
     text-align: center;
     font-size: small;
     margin-top: .4rem;
-    transition: .3s;
+    transition: .4s ease-in-out;
+}
+
+.arrow-up-error.show {
+    opacity: 1;
+    visibility: visible;
+    padding: 5px;
 }
 
 .arrow-up-error::before {
@@ -99,6 +94,29 @@
     position: absolute;
     top: -4px;
     left: 2%;
+}
+
+.privacy {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    height: auto;
+    margin-top: .7rem;
+
+    .arrow-up-error {
+        &::before {
+            left: .5%;
+        }
+
+    }
+}
+
+.privacy input[type='checkbox'] {
+    width: auto;
+}
+
+.privacy label {
+    margin: 0 0 0 10px;
 }
 
 @media (min-width: 500px) {

@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <p class="m-1 p-2 d-flex justify-content-between categoria">{{'Trending Now' | uppercase}}<button
-            (click)="showFilms()">Mostra
+            (click)="showFilms(nowPlaying)">Mostra
             tutti</button>
     </p>
     <p-carousel [value]="getFilms.nowPlayingFilms ?? []" [numVisible]="5" [numScroll]="1" [circular]="true"
@@ -12,7 +12,7 @@
         </ng-template>
     </p-carousel>
     <p class="m-1 p-2 d-flex justify-content-between categoria">{{'Popular' | uppercase}}<button
-            (click)="showFilms()">Mostra
+            (click)="showFilms(popular)">Mostra
             tutti</button>
     </p>
     <p-carousel [value]="getFilms.popularFilms ?? []" [numVisible]="5" [numScroll]="1" [circular]="true"
@@ -24,7 +24,7 @@
         </ng-template>
     </p-carousel>
     <p class="m-1 p-2 d-flex justify-content-between categoria">{{'Up Coming' | uppercase}}<button
-            (click)="showFilms()">Mostra tutti</button>
+            (click)="showFilms(upComing)">Mostra tutti</button>
     </p>
     <p-carousel [value]="getFilms.upComingFilms ?? []" [numVisible]="5" [numScroll]="1" [circular]="true"
         [showIndicators]="false" [responsiveOptions]="responsiveOptions">
@@ -35,7 +35,7 @@
         </ng-template>
     </p-carousel>
     <p class="m-1 p-2 d-flex justify-content-between categoria">{{'Top Rated' | uppercase}}<button
-            (click)="showFilms()">Mostra tutti</button>
+            (click)="showFilms(topRated)">Mostra tutti</button>
     </p>
     <p-carousel [value]="getFilms.topRatedFilms ?? []" [numVisible]="5" [numScroll]="1" [circular]="true"
         [showIndicators]="false" [responsiveOptions]="responsiveOptions">

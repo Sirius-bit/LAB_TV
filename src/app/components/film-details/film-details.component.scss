@@ -25,6 +25,13 @@
             height: 100%;
             border-radius: 10px;
         }
+
+        .error {
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            width: 100%;
+        }
     }
 
     .info {
@@ -109,6 +116,18 @@ dialog {
                 color: antiquewhite;
             }
         }
+    }
+}
+
+.error {
+    position: relative;
+    padding: 10px;
+
+    i {
+        position: absolute;
+        top: 0;
+        right: 0;
+        cursor: pointer;
     }
 }
 

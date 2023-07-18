@@ -25,6 +25,7 @@ export class FilmDetailsComponent implements OnDestroy {
   similarFilms: SimilarFilms[] = []
   page: number = 1
   operationFailed: boolean = false
+  error: boolean = false
 
   constructor(
     protected films: FilmsService,
@@ -80,21 +81,24 @@ export class FilmDetailsComponent implements OnDestroy {
   getVideos = (id: any) => {
     this.subscription.add(this.films.getVideos(id).subscribe({
       next: (data: any) => {
-        const officialTrailerVideo = data.results.find((video: any) => video.name === "Official Trailer");
+        const officialTrailerVideo = data.results.find((video: any) => video.name === "Official Trailer")
         if (officialTrailerVideo) {
+          this.error = false
           this.videoKey = officialTrailerVideo.key
-        }
-        else if (!officialTrailerVideo) {
+        } else {
           const officialTrailerVideo = data.results.find((video: any) => video.name.toLowerCase().includes("trailer"))
-          console.log(officialTrailerVideo);
-          this.videoKey = officialTrailerVideo.key
+          if (officialTrailerVideo && officialTrailerVideo.key) {
+            this.videoKey = officialTrailerVideo.key
+            this.error = false
+          } else {
+            this.error = true
+          }
         }
-        else if (!officialTrailerVideo.key) {
-          this.videoKey = officialTrailerVideo.key
-        }
-
+      },
+      error: (err: any) => {
+        this.error = true
       }
-    }))
+    }));
   }
 
   getGenres = (id: any) => {
@@ -110,7 +114,7 @@ export class FilmDetailsComponent implements OnDestroy {
     this.films.getCredits(id).subscribe({
       next: (credit: any) => {
         // console.log(credit)
-        this.credits = credit.credits.cast.map((c: any) => c.name).slice(0, 4).join(' ')
+        this.credits = credit.credits.cast.map((c: any) => c.name).slice(0, 4).join(' - ')
         // console.log(this.credits)
         const directing = credit.credits.cast.find((c: any) => c.known_for_department === "Directing")
         if (directing) {
@@ -139,8 +143,14 @@ export class FilmDetailsComponent implements OnDestroy {
           console.log('film post', data)
         },
         error: (err: any) => this.operationFailed = true
+
       })
     }
+    dialog?.close()
+  }
+
+  closeError = () => {
+    const dialog = document.querySelector('dialog')
     dialog?.close()
   }
 

@@ -23,16 +23,16 @@ export class ContactComponent implements OnInit {
       nome: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]],
       cognome: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]],
       email: ['', [Validators.required, Validators.email]],
-      telefono: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+      telefono: ['', [Validators.required, Validators.pattern('^[0-9]{3}[0-9]{3}[0-9]{4}$')]],
       messaggio: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(300)]],
-      checkbox: ['', Validators.required]
+      checkbox: ['', [Validators.required]]
     })
   }
 
   onSubmit = (form: FormGroup) => {
-    console.log('Valid?', form.valid)
-    console.log('Nome', form.value.nome)
-    console.log('Cognome', form.value.cognome)
-    console.log('Email', form.value.email)
+    if (form.valid) {
+      console.log(form.valid);
+
+    }
   }
 }

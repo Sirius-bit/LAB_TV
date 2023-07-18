@@ -1,6 +1,10 @@
 <div class="container-details">
     <div class="container-iframe">
         <iframe class="responsive-iframe" *ngIf="videoKey" [src]="films.sanitizeUrl(videoKey)" allowfullscreen></iframe>
+        <div class="error" *ngIf="error">
+            <p>Il trailer risulta temporaneamente non disponibile. <br> Riprovare più tardi <br> ERROR 404
+            </p>
+        </div>
     </div>
     <div class="details m-2">
         <section class="info">
@@ -17,11 +21,13 @@
                 <div class="cast">
                     <p class="cast">Cast: <span>{{credits}}</span> </p>
                 </div>
-                <button type="button" class="button" (click)="buyMovie()">Acquista</button>
+                <button type="button" class="button" (click)="buyMovie()">Acquista <i
+                        class="bi bi-exclamation-triangle-fill" *ngIf="operationFailed"></i> </button>
+                <dialog *ngIf="operationFailed" class="error">
+                    <i class="bi bi-x" (click)="closeError()"></i>
+                    <p>L'operazione non è andata a buon fine.<br>Connection problem<br>ERROR 404</p>
+                </dialog>
                 <dialog>
-                    <i class="bi bi-x close"></i>
-                    <p *ngIf="operationFailed">L'operazione non è andata a buon fine</p>
-
                     <p>Vuoi acquistare questo film?</p>
                     <div class="button-dlg">
                         <button type="button" (click)="buyOrNot(true,film)">Si</button>

@@ -18,6 +18,12 @@ export class FilmsService {
   nowPlayingFilms?: Result[]
   topRatedFilms?: Result[]
   upComingFilms?: Result[]
+  similarFilmsFromSlider?: Result[]
+
+
+  getFilmFromSlider = (type: string, page: number): Observable<any> => {
+    return this.http.get(`${environment.basicUrl}${type}?api_key=${environment.apiKey}&language=enUS&page=${page}`)
+  }
 
 
   getPopular = (): Observable<any> => {
