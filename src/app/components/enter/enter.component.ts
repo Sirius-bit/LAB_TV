@@ -11,6 +11,7 @@ export class EnterComponent {
   constructor(private variable: VariablesComponentService) {
     this.variable.buttonToggle$.next(false)
     variable.footer$.next(true)
+    variable.navbar$.next(false)
   }
 
 }

@@ -17,13 +17,16 @@ export class ReservedAreaFilmComponent {
 
   deleteFilm: boolean = false
   buyedFilms: any[] = []
+  noFilm: boolean = true
 
   getBuyedMedia = () => {
     this.buyedFilm.getMedia().subscribe({
       next: (films: any) => {
-        console.log(films)
+        console.log(films);
+        this.noFilm = false
         this.buyedFilms = films
-      }
+      },
+      error: (err: any) => this.noFilm = true
     })
   }
 
@@ -32,6 +35,8 @@ export class ReservedAreaFilmComponent {
   }
 
   deleteFilmFromArea = (film: any) => {
+    console.log(this.buyedFilms.length);
+    if (this.buyedFilms.length === 1) this.noFilm = true
     this.buyedFilm.deleteMedia(film.id)
     const index = this.buyedFilms.indexOf(film)
     this.buyedFilms.splice(index, 1)

@@ -8,8 +8,7 @@
     </div>
     <div class="details m-2">
         <section class="info">
-            <p class="d-flex justify-content-between titoloVoto">{{film?.title ||
-                film?.name}}<span>{{film?.vote_average}}/10</span>
+            <p class="d-flex justify-content-between titoloVoto">{{film?.title}}<span>{{film?.vote_average}}/10</span>
             </p>
             <div class="container-genres d-flex flex-wrap justify-content-start">
                 <p class="genres" *ngFor="let genre of genres">{{genre}}</p>
@@ -23,17 +22,24 @@
                 </div>
                 <button type="button" class="button" (click)="buyMovie()">Acquista <i
                         class="bi bi-exclamation-triangle-fill" *ngIf="operationFailed"></i> </button>
-                <dialog *ngIf="operationFailed" class="error">
-                    <i class="bi bi-x" (click)="closeError()"></i>
-                    <p>L'operazione non è andata a buon fine.<br>Connection problem<br>ERROR 404</p>
-                </dialog>
-                <dialog>
-                    <p>Vuoi acquistare questo film?</p>
-                    <div class="button-dlg">
-                        <button type="button" (click)="buyOrNot(true,film)">Si</button>
-                        <button type="button" (click)="buyOrNot(false)">No</button>
-                    </div>
-                </dialog>
+                <div class="dialog">
+                    <dialog *ngIf="operationFailed" class="error">
+                        <i class="bi bi-x" (click)="closeError()"></i>
+                        <p>L'operazione non è andata a buon fine.<br>ERROR 404</p>
+                    </dialog>
+                    <dialog>
+                        <p>Vuoi acquistare questo film?</p>
+                        <div class="button-dlg">
+                            <button type="button" (click)="buyOrNot(true,film)">Si</button>
+                            <button type="button" (click)="buyOrNot(false)">No</button>
+                        </div>
+                    </dialog>
+                    <dialog *ngIf="operationSuccessful" [ngClass]="{block : operationSuccessful}">
+                        <i class="bi bi-x" (click)="closeError()"></i>
+                        <p>L'acquisto è andato a buon fine! <br> Puoi trovarlo nella tua <a href=""
+                                routerLink="/reserved-area">area riservata</a></p>
+                    </dialog>
+                </div>
             </div>
         </section>
         <div class="trama">
@@ -45,5 +51,6 @@
     </div>
     <app-similar-films [similarFilms]="similarFilms" (details)="goToDetailSimilarFilm($event)"></app-similar-films>
     <div class="d-flex justify-content-center m-3" *ngIf="variable_v.showMore">
-        <button class="more" type="button" (click)="loadMore()" *ngIf="variable_v.showMore">Mostra altri</button>
+        <button class="more" type="button" (click)="loadMore(film?.id)" *ngIf="variable_v.showMore">Mostra
+            altri</button>
     </div>

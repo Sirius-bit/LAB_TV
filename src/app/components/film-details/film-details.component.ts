@@ -1,21 +1,22 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Result } from 'src/app/interfaces/films';
 import { FilmsService } from 'src/app/services/films.service';
 import { VariablesComponentService } from 'src/app/services/variables-component.service';
 import { SimilarFilms } from 'src/app/interfaces/similar-films';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BuyMediaService } from 'src/app/services/buy-film.service';
+import { Details } from 'src/app/interfaces/film-details';
 
 @Component({
   selector: 'app-film-details',
   templateUrl: './film-details.component.html',
   styleUrls: ['./film-details.component.scss']
 })
-export class FilmDetailsComponent implements OnDestroy {
+export class FilmDetailsComponent implements OnDestroy, OnInit {
 
   private subscription: Subscription = new Subscription();
-  film?: Result | any
+  film?: any
   videoKey: string = ''
   urlVideo: string = ''
   director: string = ''
@@ -24,38 +25,51 @@ export class FilmDetailsComponent implements OnDestroy {
   similarFilms: SimilarFilms[] = []
   page: number = 1
   operationFailed: boolean = false
+  operationSuccessful: boolean = false
   error: boolean = false
 
   constructor(
     protected films: FilmsService,
     protected variable_v: VariablesComponentService,
-    private route: ActivatedRoute,
+    private route: Router,
+    private router: ActivatedRoute,
     private buyMedia: BuyMediaService
   ) {
-    this.route.params.subscribe({
-      next: params => {
-        const id = params['id']
-        this.getFilm()
-      }
-    })
     this.variable_v.searchBar$.next(false)
     this.variable_v.footer$.next(false)
   }
+  ngOnInit(): void {
+    this.subscription.add(this.router.params.subscribe({
+      next: params => {
+        const id = params['id']
+        this.getFilm(id)
+      }
+    }))
+  }
 
-  getFilm = () => {
+  getFilm = (id: number) => {
+    console.log(this.films.filmToShow$);
     this.subscription.add(this.films.filmToShow$.subscribe({
       next: (film: any) => {
         if (film) {
-          this.film = film;
-          console.log(film?.title)
-          this.getVideos(film?.id)
-          this.getGenres(film?.id)
-          this.getCredits(film?.id)
-          this.getSimilarFilms(film?.id, this.page)
+          this.film = film
+          this.getVideos(film.id)
+          this.getGenres(film.id)
+          this.getCredits(film.id)
+          this.getSimilarFilms(film.id, this.page)
           localStorage.setItem('id', film.id)
         }
         else {
           const id = localStorage.getItem('id')
+          const title = localStorage.getItem('title')
+          const overview = localStorage.getItem('overview')
+          const vote_average = localStorage.getItem('vote_average')
+          this.film = {
+            id: id,
+            title: title,
+            overview: overview,
+            vote_average: vote_average
+          }
           this.getVideos(id)
           this.getGenres(id)
           this.getCredits(id)
@@ -77,9 +91,11 @@ export class FilmDetailsComponent implements OnDestroy {
     }))
   }
 
-  loadMore = () => {
+  loadMore = (id: any) => {
     this.page++
-    this.showMoreFilms(this.film?.id, this.page)
+    this.showMoreFilms(id, this.page)
+    console.log(this.film?.id);
+
   }
 
   showMoreFilms = (id: number, page: number) => {
@@ -97,14 +113,11 @@ export class FilmDetailsComponent implements OnDestroy {
         if (officialTrailerVideo) {
           this.error = false
           this.videoKey = officialTrailerVideo.key
-          console.log(this.videoKey);
 
         } else {
           const officialTrailerVideo = data.results.find((video: any) => video.name.toLowerCase().includes("trailer"))
           if (officialTrailerVideo && officialTrailerVideo.key) {
             this.videoKey = officialTrailerVideo.key
-            console.log(this.videoKey);
-
             this.error = false
           } else {
             this.error = true
@@ -156,6 +169,7 @@ export class FilmDetailsComponent implements OnDestroy {
     if (buy) {
       this.buyMedia.postMedia(film).subscribe({
         next: (data: any) => {
+          this.operationSuccessful = true
           console.log('film post', data)
         },
         error: (err: any) => this.operationFailed = true
@@ -172,9 +186,16 @@ export class FilmDetailsComponent implements OnDestroy {
 
   goToDetailSimilarFilm = (similarFilm: any) => {
     this.films.filmToShow$.next(similarFilm)
+    localStorage.setItem('id', similarFilm.id.toString())
+    localStorage.setItem('title', similarFilm.title)
+    localStorage.setItem('overview', similarFilm.overview)
+    localStorage.setItem('vote_average', similarFilm.vote_average)
+    const id = localStorage.getItem('id')
+    this.route.navigate(['film-details', similarFilm.id])
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    localStorage.removeItem('id')
+    this.subscription.unsubscribe()
   }
 }

@@ -27,7 +27,7 @@
         </div>
     </div>
     <div class="button-register">
-        <button type="submit" class="submit" (click)="myForm.submitted = true">Registrati</button>
+        <button type="submit" class="submit" (click)="myForm.submitted = true">Login</button>
         <div class="arrow-up-error credenziali" [ngClass]="{show : myForm.invalid && myForm.submitted}">
             Credenziali non valide
         </div>
@@ -35,3 +35,9 @@
     <h4>Non sei registrato? <a id="registrati" routerLink="/register">Registrati</a>
     </h4>
 </form>
+<dialog open *ngIf="notValid">
+    <i class="bi bi-x" (click)="closeError()"></i>
+    <p>Questo utente non è registrato <br> <a href="#" routerLink="/register">Clicca qui</a> per aprire il form di
+        registrazione</p>
+</dialog>
+<div class="overlay-dialog" *ngIf="notValid"></div>

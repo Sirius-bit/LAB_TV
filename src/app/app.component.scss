@@ -165,9 +165,9 @@ app-sidebar {
 }
 
 
-// .content {
-//     height: calc(100vh - 50px);
-// }
+.content {
+    min-height: calc(100vh - 50px);
+}
 
 app-dashboard {
     margin-top: 2em;

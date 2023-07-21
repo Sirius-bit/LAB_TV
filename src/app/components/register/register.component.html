@@ -59,7 +59,13 @@
         </div>
     </div>
     <p class="link-home">Torna alla home di accesso <a routerLink="/enter">cliccando qui</a></p>
-    <dialog open *ngIf="complete">
-        <p>Registrazione completata! <br>Ora puoi effetturare il <a href="#" routerLink="/login">login</a></p>
-    </dialog>
 </form>
+<dialog open *ngIf="complete">
+    <p>Registrazione completata! <br>Ora puoi effetturare il <a href="#" routerLink="/login">login</a></p>
+</dialog>
+<dialog open *ngIf="notValid">
+    <i class="bi bi-x" (click)="closeError()"></i>
+    <p>Le credenziali che hai fornito sono già state registrate. Ti preghiamo di provare con un'altra combinazione di
+        nome utente e password</p>
+</dialog>
+<div class="overlay-dialog" *ngIf="complete || notValid"></div>

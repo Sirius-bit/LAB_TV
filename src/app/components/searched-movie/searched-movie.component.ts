@@ -25,10 +25,9 @@ export class SearchedMovieComponent {
 
 
   showMoreFilms = (page: number) => {
-    this.getMoreFilms.getMovieSearched(this.search.valueSearch$, page).subscribe({
+    this.getMoreFilms.getMovieSearched(this.search.valueSearch, page).subscribe({
       next: (data: any) => {
         this.search.searchedFilms = this.search.searchedFilms?.concat(data.results)
-
       }
     })
   }

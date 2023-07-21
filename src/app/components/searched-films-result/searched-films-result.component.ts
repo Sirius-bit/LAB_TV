@@ -16,8 +16,12 @@ export class SearchedFilmsResultComponent {
 
   goToDetails = () => {
     this.getFilms.filmToShow$.next(this.movie)
-    console.log(this.movie.id)
-    this.route.navigateByUrl('film-details')
+    localStorage.setItem('id', this.movie.id.toString())
+    localStorage.setItem('title', this.movie.title)
+    localStorage.setItem('overview', this.movie.overview)
+    localStorage.setItem('vote_average', this.movie.vote_average)
+    const id = localStorage.getItem('id')
+    this.route.navigate(['film-details', this.movie.id])
   }
 
 }

@@ -24,11 +24,13 @@
     margin-top: .4rem;
     width: 80%;
     opacity: 0;
+    height: 0;
     visibility: hidden;
     transition: all .4s ease-in-out;
 }
 
 .arrow-up-error.show {
+    height: auto;
     opacity: 1;
     visibility: visible;
     padding: 5px;
@@ -159,3 +161,5 @@ button:focus {
         border: 0;
     }
 }
+
+@include dialog-auth

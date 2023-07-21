@@ -15,7 +15,6 @@ export class PopularFilmsComponent {
 
 
   goToDetails = () => {
-    console.log(this.film);
     this.details.emit(this.film)
   }
 }

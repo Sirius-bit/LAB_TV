@@ -12,5 +12,6 @@ export class VariablesComponentService {
   footer$ = new BehaviorSubject<boolean>(false)
   buttonToggle$ = new BehaviorSubject<boolean>(true)
   showMore: boolean = false
+  navbar$ = new BehaviorSubject<boolean>(true)
 
 }

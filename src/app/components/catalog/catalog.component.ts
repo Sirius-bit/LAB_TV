@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Result } from 'src/app/interfaces/films';
 import { FilmsService } from 'src/app/services/films.service';
-import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-catalog',
@@ -10,16 +10,17 @@ import { environment } from 'src/environments/environment.development';
 })
 export class CatalogComponent {
 
-  constructor(protected getFilms: FilmsService) { }
+  constructor(protected getFilms: FilmsService, private route: Router) { }
 
 
-  @Input() film: Result | undefined = undefined
+  @Input() film?: Result
 
   @Output() details = new EventEmitter<Result>
 
 
   goToDetails = () => {
     this.details.emit(this.film)
+    console.log(this.film?.title)
   }
 
 }

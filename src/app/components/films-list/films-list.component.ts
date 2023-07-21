@@ -16,6 +16,11 @@ export class FilmsListComponent {
 
   details = (film: Result) => {
     this.getListFilm.filmToShow$.next(film)
-    this.route.navigateByUrl('film-details')
+    localStorage.setItem('id', film.id.toString())
+    localStorage.setItem('title', film.title)
+    localStorage.setItem('overview', film.overview)
+    localStorage.setItem('vote_average', film.vote_average)
+    const id = localStorage.getItem('id')
+    this.route.navigate(['film-details', film.id])
   }
 }

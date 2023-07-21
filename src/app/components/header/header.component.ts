@@ -11,6 +11,7 @@ import { VariablesComponentService } from 'src/app/services/variables-component.
 })
 export class HeaderComponent {
 
+
   constructor(
     protected variable_v: VariablesComponentService,
     private film: FilmsService,
@@ -18,14 +19,17 @@ export class HeaderComponent {
     private searchBar: SearchBarService
   ) {
 
-    this.variable_v.buttonToggle$.subscribe({
-      next: (value: boolean) => {
-        this.buttonToggle = value
-      }
+    variable_v.buttonToggle$.subscribe({
+      next: (value: boolean) => this.buttonToggle = value
+    })
+
+    variable_v.navbar$.subscribe({
+      next: (value: boolean) => this.navbar = value
     })
   }
 
   buttonToggle?: boolean
+  navbar?: boolean
   page: number = 1
 
 
@@ -35,7 +39,7 @@ export class HeaderComponent {
     this.searchBar.getMovieSearched(value, this.page).subscribe({
       next: (data: any) => {
         if (value) {
-          this.searchBar.valueSearch$ = value
+          this.searchBar.valueSearch = value
           this.variable_v.showMore = true
           this.route.navigateByUrl('searched-movie')
           this.searchBar.searchedFilms = data.results

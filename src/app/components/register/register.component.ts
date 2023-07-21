@@ -11,15 +11,18 @@ import { VariablesComponentService } from 'src/app/services/variables-component.
 })
 export class RegisterComponent {
 
-  constructor(protected button_v: VariablesComponentService,
+  constructor(protected variable: VariablesComponentService,
     private fb: FormBuilder,
     private user: RegisterService
   ) {
-    this.button_v.buttonToggle$.next(false)
+    variable.buttonToggle$.next(false)
+    variable.navbar$.next(false)
+
   }
 
   myForm: any
   complete: boolean = false
+  notValid: boolean = false
 
   ngOnInit() {
     this.myForm = this.fb.group({
@@ -41,8 +44,18 @@ export class RegisterComponent {
         next: (data: LoggedUser) => {
           console.log(data)
           this.complete = true
+        },
+        error: (err: any) => {
+          this.notValid = true
         }
       })
     }
+  }
+
+  closeError = () => {
+    const dialog = document.querySelector('dialog')
+    dialog?.close()
+    this.complete = false
+    this.notValid = false
   }
 }

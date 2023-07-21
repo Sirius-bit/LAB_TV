@@ -5,9 +5,13 @@
                 dashboard</span>
         </h1>
     </div>
-    <div class="d-flex">
-        <div class="card m-1" *ngFor=" let film of buyedFilms">
-            <img class="card-img-top" src="{{buyedFilm.imageLink + film?.image}}" alt="{{film?.title}}">
+    <p id="not-film" *ngIf="noFilm">Non è presente nessun film nella tua area riservata. <br> Torna nella dashboard per
+        acquistare
+        un film</p>
+    <div class="row justify-content-start">
+        <div class="card col-sm-6 col-md-4 col-lg-3 mb-3" *ngFor="let film of buyedFilms">
+            <img class="card-img-top" src="{{buyedFilm.imageLink + film?.image}}" alt="{{film?.title}}"
+                onerror="this.onerror=null; this.src='../../../assets/img/image-not-found.webp'">
             <div class="card-body">
                 <h5 class="card-title">{{film?.title}}</h5>
                 <p class="card-text">{{film?.date}}</p>
@@ -17,3 +21,4 @@
                 (click)="deleteFilmFromArea(film)"></i>
         </div>
     </div>
+</div>

@@ -13,14 +13,16 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private route: Router,
-    private buttonToggle_v: VariablesComponentService,
+    private variable: VariablesComponentService,
     private fb: FormBuilder,
     private auth: RegisterService
   ) {
-    this.buttonToggle_v.buttonToggle$.next(false)
+    variable.buttonToggle$.next(false)
+    variable.navbar$.next(false)
   }
 
   myForm: any
+  notValid: boolean = false
 
   ngOnInit() {
     this.myForm = this.fb.group({
@@ -34,16 +36,22 @@ export class LoginComponent implements OnInit {
       email: form.value.email,
       password: form.value.password
     }
-
     if (form.valid) {
-      this.auth.login(this.myForm.getRawValue()).subscribe(u => {
-        this.auth.setLoggedUser(u)
-        this.route.navigateByUrl('/dashboard')
-        // console.log(u)
-        // console.log('Valid?', form.valid); // true or false
-        // console.log('Email', form.value.email)
-        // console.log('password', form.value.password)
+      this.auth.login(this.myForm.getRawValue()).subscribe({
+        next: (u: any) => {
+          this.auth.setLoggedUser(u)
+          this.route.navigateByUrl('/dashboard')
+        },
+        error: (err: any) => {
+          this.notValid = true
+        }
       })
     }
+  }
+
+  closeError = () => {
+    const dialog = document.querySelector('dialog')
+    dialog?.close()
+    this.notValid = false
   }
 }

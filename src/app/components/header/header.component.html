@@ -1,4 +1,3 @@
-<!-- <p>header works!</p> -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light" id="header">
     <div id="logo" class="navbar-brand" routerLink="/dashboard">
         <img src="../../assets/img/logo-tipo.png" alt="LAB-TV">
@@ -8,7 +7,7 @@
         *ngIf="buttonToggle">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="navbar">
         <ul class="navbar-nav mr-auto ml-3">
             <li class="nav-item active">
                 <a class="nav-link mr-2" href="#">Home</a>

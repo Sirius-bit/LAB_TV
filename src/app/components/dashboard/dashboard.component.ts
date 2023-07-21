@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Details } from 'src/app/interfaces/film-details';
 import { Result } from 'src/app/interfaces/films';
 import { FilmsService } from 'src/app/services/films.service';
 import { VariablesComponentService } from 'src/app/services/variables-component.service';
@@ -20,6 +21,7 @@ export class DashboardComponent {
     this.variable.searchBar$.next(true)
     this.variable.footer$.next(true)
     this.variable.buttonToggle$.next(true)
+    variable.navbar$.next(true)
 
     this.responsiveOptions = [
       {
@@ -34,12 +36,12 @@ export class DashboardComponent {
       },
       {
         breakpoint: '950px',
-        numVisible: 2,
+        numVisible: 3,
         numScroll: 1
       },
       {
         breakpoint: '700px',
-        numVisible: 1,
+        numVisible: 2,
         numScroll: 1
       }
     ]
@@ -90,6 +92,9 @@ export class DashboardComponent {
   details = (film: Result) => {
     this.getFilms.filmToShow$.next(film)
     localStorage.setItem('id', film.id.toString())
+    localStorage.setItem('title', film.title)
+    localStorage.setItem('overview', film.overview)
+    localStorage.setItem('vote_average', film.vote_average)
     const id = localStorage.getItem('id')
     this.route.navigate(['film-details', id])
   }

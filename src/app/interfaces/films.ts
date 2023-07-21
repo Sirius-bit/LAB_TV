@@ -18,7 +18,7 @@ export interface Result {
     release_date: Date
     title: string
     video: boolean
-    vote_average: number
+    vote_average: any
     vote_count: number
 }
 
