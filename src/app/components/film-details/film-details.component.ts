@@ -48,7 +48,6 @@ export class FilmDetailsComponent implements OnDestroy, OnInit {
 
   // GESTIONE FUNZIONI GET PER I FILM E RECUPERO DAL LOCAL STORAGE AL REFRESH
   getFilm = (id: number) => {
-    console.log(this.films.filmToShow$);
     this.subscription.add(this.films.filmToShow$.subscribe({
       next: (film: any) => {
         if (film) {
@@ -106,6 +105,7 @@ export class FilmDetailsComponent implements OnDestroy, OnInit {
 
   // (GET) PER IL VIDEO
   getVideos = (id: any) => {
+    this.videoKey = ''
     this.subscription.add(this.films.getVideos(id).subscribe({
       next: (data: any) => {
         const officialTrailerVideo = data.results.find((video: any) => video.name === "Official Trailer")
@@ -119,10 +119,11 @@ export class FilmDetailsComponent implements OnDestroy, OnInit {
             this.videoKey = officialTrailerVideo.key
             this.error = false
           } else this.error = true
-
         }
       },
-      error: (err: any) => this.error = true
+      error: (err: any) => {
+        this.error = true
+      }
     }));
   }
 
@@ -142,7 +143,7 @@ export class FilmDetailsComponent implements OnDestroy, OnInit {
         if (directing) this.director = directing.name
         else {
           const directing = credit.credits.crew.find((c: any) => c.known_for_department === "Directing")
-          this.director = directing.name
+          this.director = directing.known_for_department
         }
       }
     })
