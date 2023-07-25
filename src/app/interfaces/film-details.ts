@@ -27,6 +27,13 @@ export interface Details {
     credits: Credits;
 }
 
+export interface FilmOnRefresh {
+    id: string | null,
+    title: string | null,
+    overview: string | null,
+    vote_average: string | null
+}
+
 export interface BelongsToCollection {
     id: number;
     name: string;

@@ -19,10 +19,10 @@ export class ReservedAreaFilmComponent {
   buyedFilms: any[] = []
   noFilm: boolean = true
 
+  // (GET) ARRAY DI FILM ACQUISTATI
   getBuyedMedia = () => {
     this.buyedFilm.getMedia().subscribe({
       next: (films: any) => {
-        console.log(films);
         this.noFilm = false
         this.buyedFilms = films
       },
@@ -30,10 +30,12 @@ export class ReservedAreaFilmComponent {
     })
   }
 
+  // VISUALIZZAZIONE OPZIONE PER ELIMINARE FILM
   delete = () => {
     this.deleteFilm = !this.deleteFilm
   }
 
+  // CANCELLAZIONE FILM 
   deleteFilmFromArea = (film: any) => {
     console.log(this.buyedFilms.length);
     if (this.buyedFilms.length === 1) this.noFilm = true

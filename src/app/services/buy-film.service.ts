@@ -17,10 +17,12 @@ export class BuyMediaService {
 
   imageLink: string = 'https://image.tmdb.org/t/p/original'
 
+  // (GET) ARRAY FILM ACQUISTATI
   getMedia = (): Observable<Films[]> => {
     return this.http.get<Films[]>(this.url + 'films-acquistati')
   }
 
+  // (POST) FILM ACQUISTATI
   postMedia = (film: Result): Observable<BuyedFilm[]> => {
     const loggedUser = this.authService.getLoggedUser()
     const body = {
@@ -29,14 +31,11 @@ export class BuyMediaService {
       image: film.poster_path,
       title: film.title
     }
-    if (loggedUser) {
-      return this.http.post<BuyedFilm[]>(this.url + 'films-acquistati', body)
-    }
+    if (loggedUser) return this.http.post<BuyedFilm[]>(this.url + 'films-acquistati', body)
     this.router.navigate(['/login'])
     return of([])
   }
 
-  deleteMedia = (id: any) => {
-    this.http.delete(`${this.url}films-acquistati/${id}`).subscribe()
-  }
+  // (DELETE) FILM ACQUISTATI
+  deleteMedia = (id: any) => this.http.delete(`${this.url}films-acquistati/${id}`).subscribe()
 }

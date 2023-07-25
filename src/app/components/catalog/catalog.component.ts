@@ -17,7 +17,7 @@ export class CatalogComponent {
 
   @Output() details = new EventEmitter<Result>
 
-
+  // OUTPUT PER I DETTAGLI VERSO DASHBOARD E FILM LIST
   goToDetails = () => {
     this.details.emit(this.film)
     console.log(this.film?.title)

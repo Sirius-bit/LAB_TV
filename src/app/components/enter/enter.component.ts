@@ -9,9 +9,9 @@ import { VariablesComponentService } from 'src/app/services/variables-component.
 export class EnterComponent {
 
   constructor(private variable: VariablesComponentService) {
-    this.variable.buttonToggle$.next(false)
-    variable.footer$.next(true)
-    variable.navbar$.next(false)
+    variable.buttonToggle$.next(false) // HAMUBRGER MENU NON VISIBILE
+    variable.footer$.next(true) // FOOTER VISIBILE
+    variable.navbar$.next(false) // VOCI NAVBAR NON VISIBILI
   }
 
 }

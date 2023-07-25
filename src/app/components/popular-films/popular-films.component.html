@@ -1,7 +1,7 @@
 <!-- <p>popular-films works!</p> -->
 <div class="card m-1 d-flex">
-    <img class="card-img-top" src="{{getFilms.imageLink + film?.poster_path}}" alt="{{film?.original_title}}">
-    <div class="card-body" (click)="goToDetails()">
+    <img class="card-img-top" src="{{getFilms.imageLink + film?.poster_path}}">
+    <div class="card-body" (click)="goToDetails()" title="{{film?.original_title}}">
         <h5 class="card-title">{{film?.title}}</h5>
         <p class="card-text">{{film?.release_date}}</p>
         <p>Codice: {{film?.id}}</p>

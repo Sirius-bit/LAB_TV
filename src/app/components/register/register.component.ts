@@ -17,15 +17,16 @@ export class RegisterComponent {
   ) {
     variable.buttonToggle$.next(false)
     variable.navbar$.next(false)
-
   }
 
-  myForm: any
+  myForm?: any
   complete: boolean = false
   notValid: boolean = false
 
+  // VALIDATORS
   ngOnInit() {
     this.myForm = this.fb.group({
+      username: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       repeatPassword: ['', [Validators.required, Validators.minLength(8)]],
@@ -33,8 +34,10 @@ export class RegisterComponent {
     });
   }
 
+  // VALIDAZIONE REGISTRAZIONE
   onSubmit(form: FormGroup) {
     const body = {
+      username: form.value.username,
       email: form.value.email,
       password: form.value.password,
       repeatPassword: form.value.repeatPassword
@@ -52,6 +55,7 @@ export class RegisterComponent {
     }
   }
 
+  // CHIUSURA DIALOG
   closeError = () => {
     const dialog = document.querySelector('dialog')
     dialog?.close()

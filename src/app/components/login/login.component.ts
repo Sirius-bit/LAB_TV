@@ -17,13 +17,14 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private auth: RegisterService
   ) {
-    variable.buttonToggle$.next(false)
-    variable.navbar$.next(false)
+    variable.buttonToggle$.next(false) // HAMBURGER MENU  NON VISIBILE
+    variable.navbar$.next(false) // VOCI NAVBAR NON VISIBILI
   }
 
   myForm: any
   notValid: boolean = false
 
+  // VALIDATORS
   ngOnInit() {
     this.myForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -31,6 +32,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  // VALIDAZIONE LOGIN
   onSubmit(form: FormGroup) {
     const body = {
       email: form.value.email,
@@ -40,15 +42,16 @@ export class LoginComponent implements OnInit {
       this.auth.login(this.myForm.getRawValue()).subscribe({
         next: (u: any) => {
           this.auth.setLoggedUser(u)
+          this.auth.nameUser()
+          this.variable.dashboard = false
           this.route.navigateByUrl('/dashboard')
         },
-        error: (err: any) => {
-          this.notValid = true
-        }
+        error: (err: any) => this.notValid = true
       })
     }
   }
 
+  // CHIUSURA DIALOG
   closeError = () => {
     const dialog = document.querySelector('dialog')
     dialog?.close()

@@ -10,14 +10,10 @@ export class FooterComponent {
 
   constructor(private footer_v: VariablesComponentService) {
 
+    // LETTURA VALORE BEHAVIOR SUBJECT
     this.footer_v.footer$.subscribe({
-      next: (value) => {
-        // console.log(value)
-        this.footer = value
-      }
+      next: (value) => this.footer = value
     })
   }
-
-
   footer: any
 }

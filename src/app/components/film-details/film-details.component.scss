@@ -1,11 +1,9 @@
 @import '../../../partials/variables';
 @import '../../../partials/fonts';
 
-.container-details {
-    border: $black-border;
+.container {
     color: antiquewhite;
-    background-color: #000;
-    margin: 0;
+    margin: 0 auto;
     overflow-y: hidden;
 
     .container-iframe {
@@ -87,7 +85,6 @@
     justify-content: center;
     align-items: center;
 
-
     dialog {
         text-align: center;
         background-color: #fff;
@@ -96,13 +93,6 @@
 
         &::backdrop {
             background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        .close {
-            position: absolute;
-            top: 0;
-            right: 0;
-            cursor: pointer;
         }
 
         .button-dlg {
@@ -129,21 +119,15 @@
     }
 }
 
-
-.block {
-    display: block;
+.dialog-confirm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.error {
-    position: relative;
-
-    i {
-        position: absolute;
-        top: 0;
-        right: 0;
-        cursor: pointer;
-        margin: 10px;
-    }
+.close {
+    cursor: pointer;
+    transform: translate(100%, -100%);
 }
 
 .more {

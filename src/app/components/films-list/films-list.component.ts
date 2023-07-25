@@ -10,10 +10,9 @@ import { VariablesComponentService } from 'src/app/services/variables-component.
   styleUrls: ['./films-list.component.scss']
 })
 export class FilmsListComponent {
-  constructor(protected getListFilm: FilmsService, private route: Router, protected variable: VariablesComponentService) {
-    // this.getCompleteFilmList()
-  }
+  constructor(protected getListFilm: FilmsService, private route: Router, protected variable: VariablesComponentService) { }
 
+  // DETTAGLI FILM DALLA LISTA DI FILM PER CATEGORIA
   details = (film: Result) => {
     this.getListFilm.filmToShow$.next(film)
     localStorage.setItem('id', film.id.toString())

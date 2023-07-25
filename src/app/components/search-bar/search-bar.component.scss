@@ -2,7 +2,6 @@
 
 #search {
     width: 80%;
-    // border: $black-border;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -26,6 +25,17 @@
 
         &:hover {
             scale: 1.1;
+        }
+    }
+}
+
+@media(max-width: 991px) {
+
+    #search {
+        input {
+            width: 60%;
+            margin: 0 auto;
+            margin-bottom: .5rem;
         }
     }
 }

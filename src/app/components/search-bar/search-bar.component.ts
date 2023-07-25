@@ -1,6 +1,4 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { Router } from '@angular/router';
-import { FilmsService } from 'src/app/services/films.service';
 import { VariablesComponentService } from 'src/app/services/variables-component.service';
 
 @Component({
@@ -9,9 +7,9 @@ import { VariablesComponentService } from 'src/app/services/variables-component.
   styleUrls: ['./search-bar.component.scss']
 })
 export class SearchBarComponent {
-  constructor(private film: FilmsService, protected search_v: VariablesComponentService, private route: Router) {
+  constructor(protected search_v: VariablesComponentService) {
 
-    this.search_v.searchBar$.subscribe({
+    search_v.searchBar$.subscribe({
       next: (value) => {
         this.searchBoolean = value
       }
@@ -24,8 +22,8 @@ export class SearchBarComponent {
 
   @Output() searchEmit = new EventEmitter<string>()
 
+  // OUTPUT PER IL VALUE DELL'INPUT DI RICERCA
   searchedFilm = () => {
-    // console.log(this.searchValue);
     this.searchEmit.emit(this.search)
   }
 

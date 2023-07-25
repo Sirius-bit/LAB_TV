@@ -1,7 +1,7 @@
 <!-- <p>searched-movie works!</p> -->
-<div class="container-fluid">
+<div class="container-fluid mt-3">
     <div class="row">
-        <div *ngFor="let movie of search.searchedFilms" class="col-12 col-md-6 col-lg-3 py-2">
+        <div *ngFor="let movie of search.searchedFilms" class="col-6 col-md-3 col-lg-2 mb-4">
             <app-searched-films-result [movie]="movie"></app-searched-films-result>
         </div>
     </div>

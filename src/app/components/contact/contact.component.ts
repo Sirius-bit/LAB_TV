@@ -10,14 +10,16 @@ import { VariablesComponentService } from 'src/app/services/variables-component.
 export class ContactComponent implements OnInit {
 
   constructor(
-    private button_v: VariablesComponentService,
+    private variable: VariablesComponentService,
     private fb: FormBuilder
   ) {
-    this.button_v.buttonToggle$.next(false)
+    variable.buttonToggle$.next(false) // TOGLIE L'HAMBURGER MENU
+    variable.navbar$.next(false) // TOGLIE LE VOCI DELLA NAVBAR
   }
 
   myForm: any
 
+  // VALIDAZIONI INPUT
   ngOnInit(): void {
     this.myForm = this.fb.group({
       nome: ['', [Validators.required, Validators.pattern(/^[a-zA-Z\s]*$/)]],
@@ -29,6 +31,7 @@ export class ContactComponent implements OnInit {
     })
   }
 
+  // VERIFICA VALIDAZONE
   onSubmit = (form: FormGroup) => {
     if (form.valid) {
       console.log(form.valid);

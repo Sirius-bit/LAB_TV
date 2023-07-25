@@ -12,12 +12,13 @@ import { VariablesComponentService } from 'src/app/services/variables-component.
 })
 export class SearchedMovieComponent {
 
-  constructor(private route: Router, protected search: SearchBarService, private getMoreFilms: SearchBarService, protected variable_v: VariablesComponentService) {
-    variable_v.searchBar$.next(true)
+  constructor(protected search: SearchBarService, private getMoreFilms: SearchBarService, protected variable_v: VariablesComponentService) {
+    variable_v.searchBar$.next(true) // SEARCH-BAR VISIBILE
   }
 
   page: number = 1
 
+  // VISUALIZZAZIONE FILM DELLE PAGINE SUCCESSIVE
   loadMore = () => {
     this.page++
     this.showMoreFilms(this.page)
@@ -26,9 +27,8 @@ export class SearchedMovieComponent {
 
   showMoreFilms = (page: number) => {
     this.getMoreFilms.getMovieSearched(this.search.valueSearch, page).subscribe({
-      next: (data: any) => {
-        this.search.searchedFilms = this.search.searchedFilms?.concat(data.results)
-      }
+      next: (data: any) => this.search.searchedFilms = this.search.searchedFilms?.concat(data.results)
+
     })
   }
 }

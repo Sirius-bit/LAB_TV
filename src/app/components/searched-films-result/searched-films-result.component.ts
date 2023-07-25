@@ -14,6 +14,7 @@ export class SearchedFilmsResultComponent {
   @Input() movie?: any
 
 
+  // DETTAGLI PER I FILM CERCATI
   goToDetails = () => {
     this.getFilms.filmToShow$.next(this.movie)
     localStorage.setItem('id', this.movie.id.toString())

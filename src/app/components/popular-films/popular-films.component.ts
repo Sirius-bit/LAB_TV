@@ -13,8 +13,6 @@ export class PopularFilmsComponent {
 
   @Output() details = new EventEmitter<any>
 
-
-  goToDetails = () => {
-    this.details.emit(this.film)
-  }
+  // OUTPUT DETTAGLI VERSO DASHBOARD
+  goToDetails = () => this.details.emit(this.film)
 }

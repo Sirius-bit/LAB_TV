@@ -1,9 +1,11 @@
 <div class="container-fluid">
+
+    <!-- NOW-PLAYING-FILM -->
     <p class="m-1 p-2 d-flex justify-content-between categoria">{{'Trending Now' | uppercase}}<button
             (click)="showFilms(nowPlaying)">Mostra
             tutti</button>
     </p>
-    <p-carousel [value]="getFilms.nowPlayingFilms ?? []" [numVisible]="56" [numScroll]="1" [circular]="true"
+    <p-carousel [value]="getFilms.nowPlayingFilms ?? []" [numVisible]="6" [numScroll]="1" [circular]="true"
         [showIndicators]="false" [responsiveOptions]="responsiveOptions">
         <ng-template let-film pTemplate="item">
             <div class="border-1 surface-border border-round m-2 text-center">
@@ -11,11 +13,13 @@
             </div>
         </ng-template>
     </p-carousel>
+
+    <!-- POPULAR-FILM -->
     <p class="m-1 p-2 d-flex justify-content-between categoria">{{'Popular' | uppercase}}<button
             (click)="showFilms(popular)">Mostra
             tutti</button>
     </p>
-    <p-carousel [value]="getFilms.popularFilms ?? []" [numVisible]="5" [numScroll]="1" [circular]="true"
+    <p-carousel [value]="getFilms.popularFilms ?? []" [numVisible]="6" [numScroll]="1" [circular]="true"
         [showIndicators]="false" [responsiveOptions]="responsiveOptions">
         <ng-template let-film pTemplate="item">
             <div class="border-1 surface-border border-round m-2 text-center">
@@ -23,10 +27,12 @@
             </div>
         </ng-template>
     </p-carousel>
+
+    <!-- UP-COMING-FILM -->
     <p class="m-1 p-2 d-flex justify-content-between categoria">{{'Up Coming' | uppercase}}<button
             (click)="showFilms(upComing)">Mostra tutti</button>
     </p>
-    <p-carousel [value]="getFilms.upComingFilms ?? []" [numVisible]="5" [numScroll]="1" [circular]="true"
+    <p-carousel [value]="getFilms.upComingFilms ?? []" [numVisible]="6" [numScroll]="1" [circular]="true"
         [showIndicators]="false" [responsiveOptions]="responsiveOptions">
         <ng-template let-film pTemplate="item">
             <div class="border-1 surface-border border-round m-2 text-center">
@@ -34,10 +40,12 @@
             </div>
         </ng-template>
     </p-carousel>
+
+    <!-- TOP-RATED-FILM -->
     <p class="m-1 p-2 d-flex justify-content-between categoria">{{'Top Rated' | uppercase}}<button
             (click)="showFilms(topRated)">Mostra tutti</button>
     </p>
-    <p-carousel [value]="getFilms.topRatedFilms ?? []" [numVisible]="5" [numScroll]="1" [circular]="true"
+    <p-carousel [value]="getFilms.topRatedFilms ?? []" [numVisible]="6" [numScroll]="1" [circular]="true"
         [showIndicators]="false" [responsiveOptions]="responsiveOptions">
         <ng-template let-film pTemplate="item">
             <div class="border-1 surface-border border-round m-2 text-center mb-3">

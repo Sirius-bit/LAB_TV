@@ -15,9 +15,8 @@ export class TopRatedComponent {
 
   @Output() details = new EventEmitter<Result>
 
+  // OUTPUT PER DETTAGLI FILM
+  goToDetails = () => this.details.emit(this.film)
 
-  goToDetails = () => {
-    this.details.emit(this.film)
-  }
 
 }

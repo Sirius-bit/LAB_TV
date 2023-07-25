@@ -1,6 +1,20 @@
 <form action="" id="form-registrazione" class="form" role="form" [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
     <h2>Registrati</h2>
     <div class="field">
+        <label for="username">Username</label>
+        <input type="email" name="username" id="username" autocomplete="off" placeholder="Username"
+            formControlName="username">
+        <div class="arrow-up-error"
+            [ngClass]="{show :myForm.get('username').invalid && (myForm.get('username').touched || myForm.submitted)}">
+            <div *ngIf="myForm.get('username').errors?.required">
+                Lo username è obbligatorio
+            </div>
+            <div *ngIf="myForm.get('username').errors?.username">
+                Formato username non valido
+            </div>
+        </div>
+    </div>
+    <div class="field">
         <label for="email-registrazione">Email</label>
         <input type="email" name="email" id="email-registrazione" autocomplete="off" placeholder="Email"
             formControlName="email">
@@ -61,6 +75,7 @@
     <p class="link-home">Torna alla home di accesso <a routerLink="/enter">cliccando qui</a></p>
 </form>
 <dialog open *ngIf="complete">
+    <i class="bi bi-x" (click)="closeError()"></i>
     <p>Registrazione completata! <br>Ora puoi effetturare il <a href="#" routerLink="/login">login</a></p>
 </dialog>
 <dialog open *ngIf="notValid">

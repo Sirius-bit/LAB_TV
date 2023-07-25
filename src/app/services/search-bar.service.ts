@@ -13,6 +13,7 @@ export class SearchBarService {
   searchedFilms?: Result[]
   valueSearch: string = ''
 
+  // (GET) FILM CERCATI
   getMovieSearched = (query?: string | any, page?: number) => {
     return this.http.get(`https://api.themoviedb.org/3/search/movie?api_key=${environment.apiKey}&query=${query}&page=${page}`)
   }

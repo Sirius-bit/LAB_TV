@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Result } from 'src/app/interfaces/films';
 import { FilmsService } from 'src/app/services/films.service';
 import { VariablesComponentService } from 'src/app/services/variables-component.service';
 import { SimilarFilms } from 'src/app/interfaces/similar-films';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BuyMediaService } from 'src/app/services/buy-film.service';
-import { Details } from 'src/app/interfaces/film-details';
+import { Result } from 'src/app/interfaces/films';
+import { FilmOnRefresh } from 'src/app/interfaces/film-details';
 
 @Component({
   selector: 'app-film-details',
@@ -16,7 +16,7 @@ import { Details } from 'src/app/interfaces/film-details';
 export class FilmDetailsComponent implements OnDestroy, OnInit {
 
   private subscription: Subscription = new Subscription();
-  film?: any
+  film?: Result | FilmOnRefresh
   videoKey: string = ''
   urlVideo: string = ''
   director: string = ''
@@ -25,7 +25,6 @@ export class FilmDetailsComponent implements OnDestroy, OnInit {
   similarFilms: SimilarFilms[] = []
   page: number = 1
   operationFailed: boolean = false
-  operationSuccessful: boolean = false
   error: boolean = false
 
   constructor(
@@ -47,6 +46,7 @@ export class FilmDetailsComponent implements OnDestroy, OnInit {
     }))
   }
 
+  // GESTIONE FUNZIONI GET PER I FILM E RECUPERO DAL LOCAL STORAGE AL REFRESH
   getFilm = (id: number) => {
     console.log(this.films.filmToShow$);
     this.subscription.add(this.films.filmToShow$.subscribe({
@@ -79,33 +79,32 @@ export class FilmDetailsComponent implements OnDestroy, OnInit {
     }))
   }
 
+  // (GET) MOSTRARE FILM SIMILI
   getSimilarFilms = (id: any, page: number) => {
     this.subscription.add(this.films.getSimilarFilms(id, this.page).subscribe({
       next: (similarFilms) => {
         if (similarFilms) {
           this.variable_v.showMore = true
           this.similarFilms = similarFilms.results
-          console.log(similarFilms)
         }
       }
     }))
   }
 
+  // CLICK PER MOSTRARE LE PAGINE SUCCESSIVE PER I FILM SIMILI
   loadMore = (id: any) => {
     this.page++
     this.showMoreFilms(id, this.page)
-    console.log(this.film?.id);
-
   }
 
+  // (GET) ALTRI FILM SIMILI
   showMoreFilms = (id: number, page: number) => {
     this.films.getSimilarFilms(id, page).subscribe({
-      next: (data: any) => {
-        this.similarFilms = this.similarFilms.concat(data.results)
-      }
+      next: (data: any) => this.similarFilms = this.similarFilms.concat(data.results)
     })
   }
 
+  // (GET) PER IL VIDEO
   getVideos = (id: any) => {
     this.subscription.add(this.films.getVideos(id).subscribe({
       next: (data: any) => {
@@ -113,77 +112,69 @@ export class FilmDetailsComponent implements OnDestroy, OnInit {
         if (officialTrailerVideo) {
           this.error = false
           this.videoKey = officialTrailerVideo.key
-
-        } else {
+        }
+        else {
           const officialTrailerVideo = data.results.find((video: any) => video.name.toLowerCase().includes("trailer"))
           if (officialTrailerVideo && officialTrailerVideo.key) {
             this.videoKey = officialTrailerVideo.key
             this.error = false
-          } else {
-            this.error = true
-          }
+          } else this.error = true
+
         }
       },
-      error: (err: any) => {
-        this.error = true
-      }
+      error: (err: any) => this.error = true
     }));
   }
 
+  // (GET) GENERI
   getGenres = (id: any) => {
     this.films.getDetails(id).subscribe({
-      next: (detail: any) => {
-        this.genres = detail.genres.map((g: any) => g.name)
-        // console.log(this.genres)
-      }
+      next: (detail: any) => this.genres = detail.genres.map((g: any) => g.name)
     })
   }
 
+  // (GET) CREDITI
   getCredits = (id: any) => {
     this.films.getCredits(id).subscribe({
       next: (credit: any) => {
-        console.log(credit)
         this.credits = credit.credits.cast.map((c: any) => c.name).slice(0, 4).join(' - ')
-        // console.log(this.credits)
         const directing = credit.credits.cast.find((c: any) => c.known_for_department === "Directing")
-        if (directing) {
-          this.director = directing.name
-          // console.log(this.director)
-        }
+        if (directing) this.director = directing.name
         else {
           const directing = credit.credits.crew.find((c: any) => c.known_for_department === "Directing")
           this.director = directing.name
-          // console.log(this.director)
         }
       }
     })
   }
 
+  // (GET) ACQUISTO FILM
   buyMovie = () => {
     const dialog = document.querySelector('dialog')
     dialog?.showModal()
   }
 
+  // GESTIONE ACQUISTO
   buyOrNot = (buy: boolean, film?: any) => {
     const dialog = document.querySelector('dialog')
     if (buy) {
-      this.buyMedia.postMedia(film).subscribe({
-        next: (data: any) => {
-          this.operationSuccessful = true
-          console.log('film post', data)
-        },
-        error: (err: any) => this.operationFailed = true
-
-      })
+      if (localStorage.getItem('user') === null) this.route.navigateByUrl('/unauthorized')
+      else {
+        this.buyMedia.postMedia(film).subscribe({
+          error: (err: any) => this.operationFailed = true
+        })
+      }
     }
     dialog?.close()
   }
 
+  // CHIUSURA DIALOG
   closeError = () => {
     const dialog = document.querySelector('dialog')
     dialog?.close()
   }
 
+  // GESTIONE DETTAGLI FILM SIMILI
   goToDetailSimilarFilm = (similarFilm: any) => {
     this.films.filmToShow$.next(similarFilm)
     localStorage.setItem('id', similarFilm.id.toString())
@@ -194,8 +185,13 @@ export class FilmDetailsComponent implements OnDestroy, OnInit {
     this.route.navigate(['film-details', similarFilm.id])
   }
 
+  // ELIMINAZIONE LOCAL STORAGE E SUBSCRIPTION
   ngOnDestroy(): void {
     localStorage.removeItem('id')
+    localStorage.removeItem('id')
+    localStorage.removeItem('title')
+    localStorage.removeItem('overview')
+    localStorage.removeItem('vote_average')
     this.subscription.unsubscribe()
   }
 }

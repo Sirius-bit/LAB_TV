@@ -10,17 +10,13 @@ import { FilmsService } from 'src/app/services/films.service';
   styleUrls: ['./similar-films.component.scss']
 })
 export class SimilarFilmsComponent {
-  constructor(
-    protected films: FilmsService,
-    private route: Router
-  ) { }
+  constructor(protected films: FilmsService) { }
 
 
   @Input() similarFilms: SimilarFilms[] = []
   @Output() details = new EventEmitter<Result>
 
-  detailsSimilarFilm = (similarFilm: any) => {
-    this.details.emit(similarFilm)
-    // console.log(similarFilm);
-  }
+  // OUTPUT PER DETTAGLI SIMILAR FILMS
+  detailsSimilarFilm = (similarFilm: any) => this.details.emit(similarFilm)
+
 }

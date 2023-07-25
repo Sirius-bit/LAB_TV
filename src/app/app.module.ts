@@ -11,7 +11,6 @@ import { CarouselModule } from 'primeng/carousel'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { SliderComponent } from './components/slider/slider.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ContactComponent } from './components/contact/contact.component';
@@ -37,7 +36,6 @@ import { EnterComponent } from './components/enter/enter.component';
   declarations: [
     AppComponent,
     HeaderComponent,
-    SliderComponent,
     LoginComponent,
     RegisterComponent,
     ContactComponent,
