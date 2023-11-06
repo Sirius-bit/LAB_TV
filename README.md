@@ -1,5 +1,7 @@
 # LABTV2
 
+*** THIS PROJECT WORKS WITH JSON SERVER ---> https://github.com/typicode/json-server ***
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.5.
 
 ## Development server
