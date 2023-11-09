@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { BuyedFilm } from 'src/app/interfaces/buyed-film';
 import { BuyMediaService } from 'src/app/services/buy-film.service';
 import { VariablesComponentService } from 'src/app/services/variables-component.service';
 

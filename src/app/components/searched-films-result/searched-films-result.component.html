@@ -1,5 +1,5 @@
 <div class="card d-flex mb-3">
-    <img class="card-img-top" src="{{getFilms.imageLink + movie?.poster_path}}" alt="{{movie?.original_title}}"
+    <img class="card-img-top" [src]="getFilms.imageLink + movie?.poster_path" [alt]="movie?.original_title"
         onerror="this.onerror=null; this.src='../../../assets/img/image-not-found.webp'" width="100%" height="100%">
     <div class="card-body" (click)="goToDetails()">
         <h5 class="card-title">{{movie?.title}}</h5>
